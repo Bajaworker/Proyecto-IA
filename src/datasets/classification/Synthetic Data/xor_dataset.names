@@ -1,0 +1,30 @@
+Title: xor_dataset.txt
+
+Abstract: The Exclusive XOR dataset consists of two features labeled as X1 and X2, along with corresponding labels obtained from the Exclusive XOR function. This function returns 1 for points located in the first and third quadrants of the coordinate system, and 0 for points located in the second and fourth quadrants.
+
+----------------------------------------------------------------------------------------
+
+Data Set Characteristics: Logistic Regression
+Attribute Characteristics: Real
+Associated Tasks: Classification
+Number of Instances: 750
+Number of Inputs Attributes : 2
+Number of Targets Attributes: 1
+Missing Values? N/A
+Area: Computer
+
+----------------------------------------------------------------------------------------
+
+Source:
+
+Donor: Juan R. Castro
+Email: jrcastror@uabc.edu.mx
+Institution: Facultad de Ciencias Químicas e Ingeniería, UABC
+----------------------------------------------------------------------------------------
+
+Data Set Information:
+
+The data set includes 750 data points. There are 2 input variables, and 1 output 
+variables in the data set.
+
+----------------------------------------------------------------------------------------

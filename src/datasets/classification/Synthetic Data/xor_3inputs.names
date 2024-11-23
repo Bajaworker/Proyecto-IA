@@ -1,0 +1,30 @@
+Title: xor_3inputs.txt
+
+Abstract: 3-input XOR gate truth table
+
+----------------------------------------------------------------------------------------
+
+Data Set Characteristics: Logistic Regression
+Attribute Characteristics: Real
+Associated Tasks: Classification
+Number of Instances:  8
+Number of Inputs Attributes : 3
+Number of Targets Attributes: 1
+Missing Values? N/A
+Area: Computer
+
+----------------------------------------------------------------------------------------
+
+Source:
+
+Donor: Juan R. Castro
+Email: jrcastror@uabc.edu.mx
+Institution: Facultad de Ciencias Químicas e Ingeniería, UABC
+----------------------------------------------------------------------------------------
+
+Data Set Information:
+
+The data set includes 8 data points. There are 3 input variables, and 1 output 
+variables in the data set.
+
+----------------------------------------------------------------------------------------

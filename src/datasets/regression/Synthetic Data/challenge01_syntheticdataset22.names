@@ -1,0 +1,30 @@
+Title: challenge01_syntheticdataset22.txt
+
+Abstract: Synthetic dataset
+
+----------------------------------------------------------------------------------------
+
+Data Set Characteristics: Multivariate Linear Regression
+Attribute Characteristics: Real
+Associated Tasks: Regression
+Number of Instances:  100
+Number of Inputs Attributes : 2
+Number of Targets Attributes: 2
+Missing Values? N/A
+Area: Computer
+
+----------------------------------------------------------------------------------------
+
+Source:
+
+Donor: Juan R. Castro
+Email: jrcastror@uabc.edu.mx
+Institution: Facultad de Ciencias Químicas e Ingeniería, UABC
+----------------------------------------------------------------------------------------
+
+Data Set Information:
+
+The data set includes 100 data points. There are 2 input variables, and 2 output 
+variables in the data set.
+
+----------------------------------------------------------------------------------------
