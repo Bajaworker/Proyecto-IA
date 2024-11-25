@@ -14,3 +14,7 @@ class Optimizador(ABC):
             return np.zeros(dimensiones[0], dtype=np.float64)
         return np.zeros((dimensiones[0], dimensiones[1]), dtype=np.float64)
 
+    @abstractmethod
+    def optimizar(self, modo="lote", tamañoDeLote=None):
+        pass
+

@@ -1,5 +1,5 @@
 import numpy as np
-
+#### El matriz de diseño se esta cambiando cuando se aplicar a diferente lotes, se puede aplicar de lote hasta online, pero de online a lote, se necesita modificarlo, o en cada vez que intentar hacer un operacion se crear un matriz de diseño
 class MatrizDiseño:
     def __init__(self, DatosX,grados):
         self.X = DatosX
@@ -47,3 +47,4 @@ class MatrizDiseño:
     def getTamañoParametro(self):
         r,c=self.matrixDiseño.shape
         return c
+

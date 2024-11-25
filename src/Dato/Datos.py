@@ -1,15 +1,17 @@
 import numpy as np
 class Datos:
-    def __init__(self,ruta):
+    def __init__(self,ruta,porcentajeDedatos):
         self.ruta = ruta
         self.X=None
         self.Y=None
+        self.porcentajeDedatos=porcentajeDedatos
 
     def definirXY(self,colIniciaX,colFinalX,colIniciaY,colFinalY,tipoSeparacion):
         try:
             dato = np.loadtxt(self.ruta, delimiter=tipoSeparacion)
-            self.X = dato[:, colIniciaX:colFinalX]
-            self.Y = dato[:, colIniciaY:colFinalY]
+            datosTomado = int(dato.shape[0] * self.porcentajeDedatos)
+            self.X = dato[:datosTomado, colIniciaX:colFinalX]
+            self.Y = dato[:datosTomado, colIniciaY:colFinalY]
         except Exception as e:
             print(f"Error al cargar el archivo: {e}")
 
@@ -53,5 +55,13 @@ class Datos:
         if self.X is None or self.Y is None:
             raise ValueError("Los datos no están definidos. Usa definirXY() primero.")
         return self.X[indices, :], self.Y[indices, :]
+
+
+    def setPorcentajeDedatos(self, nuevo_porcentaje):
+
+        if nuevo_porcentaje <= 0 or nuevo_porcentaje > 1:
+            raise ValueError("El porcentaje debe ser un valor entre 0 y 1.")
+        self.porcentajeDedatos = nuevo_porcentaje
+
 
 
