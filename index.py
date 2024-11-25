@@ -1,21 +1,45 @@
 from src.reading.index import ReadingDataSets
-
-url="src/datasets/classification/Admisiones/ex2data1.txt"
-# url="src/datasets/classification/Breast cancer/cancer_dataset.dat"
-# url="src/datasets/regression/Concrete Compressive Strength/Concrete_Data.xls"
-# url="src/datasets/regression/Gas Turbine Emission/gt_2011.csv"
-# url = "src/datasets/regression/Synthetic Data/challenge03_syntheticdataset22.mat"
-# url="src/datasets/regression/Engine Behavior/engine_dataset.mat"
-# url="src/datasets/classification/HandWrittenDigit/handWrittenDigit_dataset.mat"
-# url="src/datasets/classification/MNIST/t10k-labels.idx1-ubyte"
+from src.interface.index import Interface
 
 
-test = ReadingDataSets()
+class proyectoIA:
+    def __init__(self):
+        self.class_interface = Interface()
+        self.class_interface.init_interface()
+        self.variablesSeleccionadas = self.class_interface.getVariablesSeleccionadas()
 
-# resultado={
-#     columns:10,
-#     rows:5,
-#     data:[1,2,2,....]
-# }
+        self.class_reading = ReadingDataSets()
 
-print(test.reading(url))
+        #TRAE TODOS LOS DATOS QUE EL USUARIO SELECCIONA EN CONSOLA
+        variables_datos = self.class_reading.reading(self.variablesSeleccionadas["URL_DE_DATOS"])
+
+        self.numero_filas = variables_datos["rows"]
+        self.numero_columns = variables_datos["colums"]
+
+        #DATOS DEL DOCUMENTO SELECCIONADO
+        self.datos = variables_datos["data"]
+
+        #NORMALIZACION DE DATOS
+        # self.class_reading.desNormalizarDatosX()
+        # self.class_reading.normalizarDatosX()
+
+        self.MODELO = self.variablesSeleccionadas["MODELO"]
+        self.ALGORITMO = self.variablesSeleccionadas["ALGORITMO"]
+        self.TECNICA_DE_REGULARIZACION = self.variablesSeleccionadas["TECNICA_DE_REGULARIZACION"]
+
+        self.FORMA_DE_APRENDIZAJE = self.variablesSeleccionadas["FORMA_DE_APRENDIZAJE"]
+        self.METRICA_DE_DESEMPENIO = self.variablesSeleccionadas["METRICA_DE_DESEMPENIO"]
+        self.TASA_DE_ENTRENAMIENTO = self.variablesSeleccionadas["TASA_DE_ENTRENAMIENTO"]
+        
+        self.CAPERTA_DE_DATOS = self.variablesSeleccionadas["CAPERTA_DE_DATOS"]
+        self.URL_DE_DATOS = self.variablesSeleccionadas["URL_DE_DATOS"]
+
+        #AGREGAR ALGORITMO
+        if self.MODELO == "ADAGRAD":
+            #llamar algoritmo
+            pass
+
+        print(self.datos)
+
+
+initClass = proyectoIA()
