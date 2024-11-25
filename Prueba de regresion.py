@@ -26,7 +26,7 @@ datosClase.definirXY(0, 1, 1, 2, ",")
 grado = 1
 matriz_diseño = MatrizDiseño(datosClase, grado)
 
-print(matriz_diseño.getTamaño())
+
 # Función de error
 funcion_error = (
     FuncionError(matriz_diseño, datosClase))
@@ -35,7 +35,7 @@ funcion_error = (
 funcion_objetivo = FuncionSSM(matriz_diseño, datosClase, funcion_error)
 
 # Optimización con AlgorithmAdagrad
-theta_inicial = np.random.rand(grado + 1, 1)
+theta_inicial = np.random.rand(matriz_diseño.getTamañoParametro(), 1)
 print(theta_inicial.shape)
 optimizador = AlgorithmAdagrad(
     theta=theta_inicial,

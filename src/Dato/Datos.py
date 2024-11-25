@@ -46,8 +46,12 @@ class Datos:
             print(f"Error al calcular el tamaño de los datos: {e}")
             return None
 
-    def ColumnaDeY(self):
-        c,z=self.Y.shape
-        return z
+    def renglonColumnaDeY(self):
+        return self.Y.shape
+
+    def obtenerMiniLote(self, indices):
+        if self.X is None or self.Y is None:
+            raise ValueError("Los datos no están definidos. Usa definirXY() primero.")
+        return self.X[indices, :], self.Y[indices, :]
 
 
