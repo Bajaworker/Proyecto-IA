@@ -7,12 +7,17 @@ class FuncionSSM(Funcion):
         super().__init__(MatrizDiseño,Datos)
         self.Funcion=Funcion
 
-    def ejecutarFuncion(self,theta):
-        error=self.Funcion.ejecutarFuncion(theta)
+    def ejecutarFuncion(self,theta,X_Batch=None,Y_Batch=None):
+        error=self.Funcion.ejecutarFuncion(theta,X_Batch,Y_Batch)
         SSE=np.sum(error**2)
         return SSE
 
-    def gradiente(self,theta):
-        error = self.Funcion.ejecutarFuncion(theta)
-        gt = 2 * (self.MatrizDiseño.matrixDiseño.T @ error)
+    def gradiente(self,theta,X_Batch=None,Y_Batch=None):
+        if X_Batch is not None:
+            matrizDiseño = self.MatrizDiseño.getMatrizDiseñoMiniLote(X_Batch)
+        else:
+            matrizDiseño = self.MatrizDiseño.getMatrizDiseño()
+
+        error = self.Funcion.ejecutarFuncion(theta, X_Batch, Y_Batch)
+        gt = -2 * (matrizDiseño.T @ error)
         return gt

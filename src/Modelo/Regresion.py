@@ -10,7 +10,7 @@ class ModeloRegresion(Modelo):
 
     def entrenar(self,theta):
         theta=self.Optimizador.optimizar()
-
         return theta
+
 
 

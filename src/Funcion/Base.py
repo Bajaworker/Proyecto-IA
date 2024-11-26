@@ -6,10 +6,16 @@ class Funcion(ABC):
         self.MatrizDiseño=MatrizDiseño
         self.Datos=Datos
 
+
     @abstractmethod
-    def ejecutarFuncion(self):
+    def ejecutarFuncion(self,theta,X_Batch,Y_Batch):
         pass
 
     @abstractmethod
-    def gradiente(self):
+    def gradiente(self,theta,X_Batch,Y_Batch):
         pass
+
+
+
+
+

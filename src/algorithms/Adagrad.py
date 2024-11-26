@@ -4,47 +4,105 @@ from src.algorithms.Base import Optimizador
 
 
 class AlgorithmAdagrad(Optimizador):
-    def __init__(self, theta, funcion, tasaDeAprendizaje, lr_decay=0, peso_decay=0, epsilon=1e-8, epoca=1000, steps=100):
-        super().__init__(theta, funcion, tasaDeAprendizaje)
+    def __init__(self, theta, funcion, tasaDeAprendizaje, Datos, lr_decay=0, peso_decay=0, epsilon=1e-8, epoca=1000,
+                 steps=100,tolerancia=1e-6):
+        super().__init__(theta, funcion, tasaDeAprendizaje, Datos)
         self.lr_decay = lr_decay
         self.peso_decay = peso_decay
         self.epsilon = epsilon
         self.epoca = epoca
         self.steps = steps
+        self.tolerancia = tolerancia
 
-    def getValuesInitStateSum(self):
-        dimensiones = self.theta.shape
-        if len(dimensiones) == 1:
-            return np.zeros(dimensiones[0], dtype=np.float64)
-        return np.zeros((dimensiones[0], dimensiones[1]), dtype=np.float64)
+    def _actualizar_parametros(self, g_t,state_sum):
+        state_sum += g_t ** 2
+        return state_sum
 
-    def optimizar(self):
+    def _calcular_tasa_aprendizaje(self, iteracion):
+        return self.tasaDeAprendizaje / (1 + (iteracion - 1) * self.lr_decay)
+
+    def set_actualizar_theta(self,g_t,state_sum,lr_t):
+        self.theta -= (lr_t / (np.sqrt(state_sum) + self.epsilon)) * g_t
+
+
+    def optimizar(self, modo="lote", tamañoDeLote=None):
         state_sum = self.getValuesInitStateSum()
+        X = self.Datos.getX()
+        Y = self.Datos.getY()
+        q = X.shape[0]
 
         for t in range(1, self.epoca + 1):
-            # Calcula el gradiente
-            g_t = self.funcion.gradiente(self.theta)
+            if modo == "lote":
+                g_t = self.funcion.gradiente(self.theta)
+                lr_t = self._calcular_tasa_aprendizaje(t)
+                if self.peso_decay != 0:
+                    g_t += self.peso_decay * self.theta
+                state_sum = self._actualizar_parametros(g_t, state_sum)
+                self.set_actualizar_theta(g_t, state_sum, lr_t)
 
-            # Ajusta la tasa de aprendizaje con decaimiento
-            lr_t = self.tasaDeAprendizaje / (1 + (t - 1) * self.lr_decay)
+            elif modo == "mini-lote":
+                if tamañoDeLote is None:
+                    raise ValueError("Se requiere tamañoDeLote para el modo 'mini-lote'")
+                indices = np.random.permutation(q)
+                X, Y = self.Datos.obtenerMiniLote(indices)
+                n_minilote = q // tamañoDeLote
 
-            # Aplica el peso de regularización
-            if self.peso_decay != 0:
-                g_t += self.peso_decay * self.theta
+                for j in range(n_minilote):
+                    X_Batch = X[j * tamañoDeLote: (j + 1) * tamañoDeLote, :]
+                    Y_Batch = Y[j * tamañoDeLote: (j + 1) * tamañoDeLote, :]
+                    g_t = self.funcion.gradiente(self.theta, X_Batch, Y_Batch)
+                    lr_t = self._calcular_tasa_aprendizaje(t)
+                    if self.peso_decay != 0:
+                        g_t += self.peso_decay * self.theta
+                    state_sum = self._actualizar_parametros(g_t, state_sum)
+                    self.set_actualizar_theta(g_t, state_sum, lr_t)
 
-            # Actualiza la suma acumulativa de gradientes al cuadrado
-            state_sum += g_t ** 2
+                if q % tamañoDeLote != 0:
+                    X_Batch = X[n_minilote * tamañoDeLote:, :]
+                    Y_Batch = Y[n_minilote * tamañoDeLote:, :]
+                    g_t = self.funcion.gradiente(self.theta, X_Batch, Y_Batch)
+                    lr_t = self._calcular_tasa_aprendizaje(t)
+                    if self.peso_decay != 0:
+                        g_t += self.peso_decay * self.theta
+                    state_sum = self._actualizar_parametros(g_t, state_sum)
+                    self.set_actualizar_theta(g_t, state_sum, lr_t)
 
-            # Actualiza los parámetros con Adagrad
-            self.theta -= (lr_t / (np.sqrt(state_sum) + self.epsilon)) * g_t
+            elif modo == "online":
+                for j in range(q):
+                    X_Batch = X[j:j + 1, :]
+                    Y_Batch = Y[j:j + 1, :]
+                    g_t = self.funcion.gradiente(self.theta, X_Batch, Y_Batch)
+                    lr_t = self._calcular_tasa_aprendizaje(t)
+                    if self.peso_decay != 0:
+                        g_t += self.peso_decay * self.theta
+                    state_sum = self._actualizar_parametros(g_t, state_sum)
+                    self.set_actualizar_theta(g_t, state_sum, lr_t)
 
-            # Imprime resultados cada `self.steps` iteraciones
+            else:
+                raise ValueError("Modo desconocido: debe ser 'lote', 'mini-lote' o 'online'")
+
+            funcionObejtivo = self.funcion.ejecutarFuncion(self.theta, X, Y)
+            ##if funcionObejtivo < self.tolerancia:
+                ##print(f"Optimización detenida en iteración {t}: Funcion objetivo = {funcionObejtivo}")
+                ##break
+
             if t % self.steps == 0:
                 print({
                     "iteracion": t,
                     "theta": self.theta,
                     "gradiente": g_t,
-                    "state_sum": state_sum,
+                    "Funcion Objetivo": funcionObejtivo,
                 })
 
         return self.theta
+
+
+
+
+
+
+
+
+
+
+

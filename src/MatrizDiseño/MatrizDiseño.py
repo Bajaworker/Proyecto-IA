@@ -1,10 +1,9 @@
 import numpy as np
-
 class MatrizDiseño:
-    def __init__(self, Datos,grados):
-        self.Datos = Datos
+    def __init__(self, DatosX,grados):
+        self.X = DatosX
         self.grados=grados
-        self.matrixDiseño=self.designMatrix(self.grados,self.Datos.getX())
+        self.matrixDiseño=self.designMatrix(self.grados,self.X)
 
     def designMatrix(self, degree, dataInputs):
         A = []
@@ -24,12 +23,22 @@ class MatrizDiseño:
                 M.append(self.polyPowerMatrix(degree - k, X) * W ** k)
             return np.concatenate(M)
 
-    def setMatrizDiseño(self,grado):
-        self.grado=grado
-        self.matrixDiseño=self.designMatrix(self.grados,self.Datos.getX())
+    def setGrado(self,grados):
+        self.grados = grados
 
     def getMatrizDiseño(self):
         return self.matrixDiseño
 
-    def getTamaño(self):
-        return self.matrixDiseño.shape
+    def getX(self):
+        return self.X
+
+    def getGrado(self):
+        return self.grados
+
+    def getTamañoParametro(self):
+        r,c=self.matrixDiseño.shape
+        return c
+
+    def getMatrizDiseñoMiniLote(self, X_Batch):
+        return self.designMatrix(self.grados, X_Batch)
+
