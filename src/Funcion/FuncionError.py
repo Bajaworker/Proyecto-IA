@@ -8,8 +8,7 @@ class FuncionError(Funcion):
 
     def ejecutarFuncion(self,theta,X_Batch=None,Y_Batch=None):
         if X_Batch is not None or Y_Batch is not None:
-            self.MatrizDiseño.setMatrizDiseño(X_Batch)
-            matrizBatch=self.MatrizDiseño.getMatrizDiseño()
+            matrizBatch=self.MatrizDiseño.getMatrizDiseñoMiniLote(X_Batch)
             error=Y_Batch-(matrizBatch@theta)
             return error
 

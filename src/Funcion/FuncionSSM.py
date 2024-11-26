@@ -14,8 +14,7 @@ class FuncionSSM(Funcion):
 
     def gradiente(self,theta,X_Batch=None,Y_Batch=None):
         if X_Batch is not None:
-            self.MatrizDiseño.setMatrizDiseño(X_Batch)
-            matrizDiseño = self.MatrizDiseño.getMatrizDiseño()
+            matrizDiseño = self.MatrizDiseño.getMatrizDiseñoMiniLote(X_Batch)
         else:
             matrizDiseño = self.MatrizDiseño.getMatrizDiseño()
 

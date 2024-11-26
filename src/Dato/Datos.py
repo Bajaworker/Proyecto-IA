@@ -5,7 +5,9 @@ class Datos:
         self.X=None
         self.Y=None
         self.porcentajeDedatos=porcentajeDedatos
-
+        ## para implementar la otras forma, es necesario infresar un parametro de que si es invesor o no, si es inverso, entoces podemos aplicar la obtenercion de inverso para que aplicar obtener datos XyY de test
+        ###Agregar un nuevo atributo que podemos permite que obtener la datos de test si la porcentajeDeDatos es diferentes a la 1
+###self.Ytest y self.Xtest o otros forma es podemos separar crear un datos llamado datos de entrenamiento y datos de test
     def definirXY(self,colIniciaX,colFinalX,colIniciaY,colFinalY,tipoSeparacion):
         try:
             dato = np.loadtxt(self.ruta, delimiter=tipoSeparacion)
@@ -62,6 +64,7 @@ class Datos:
         if nuevo_porcentaje <= 0 or nuevo_porcentaje > 1:
             raise ValueError("El porcentaje debe ser un valor entre 0 y 1.")
         self.porcentajeDedatos = nuevo_porcentaje
+
 
 
 
