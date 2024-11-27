@@ -8,6 +8,7 @@ from src.MatrizDiseño.MatrizDiseño import MatrizDiseño
 from src.algorithms.Adagrad import AlgorithmAdagrad
 from src.Funcion.FuncionSSM import FuncionSSM
 
+
 # Ruta del archivo
 ruta = "C:/Users/benit/Downloads/challenge1_dataset22 (1).txt"
 ruta2="C:/Users/benit/Downloads/energyefficiency_dataset.txt"
