@@ -1,5 +1,9 @@
 from src.reading.index import ReadingDataSets
 from src.interface.index import Interface
+import pandas as pd
+
+
+
 
 
 class proyectoIA:

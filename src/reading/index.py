@@ -4,6 +4,7 @@ from scipy.io import loadmat
 
 
 class ReadingDataSets:
+
     def __init__(self):
         self.delimiter = ","
     
@@ -16,11 +17,11 @@ class ReadingDataSets:
         return{"colums":columns,"rows":rows,"data":data}
     
     def readingTxt(self,url):
-        doc = pd.read_csv(url, self.delimiter)
+        doc = pd.read_csv(url, delimiter=self.delimiter)
         return self.setFormatDefault(doc)
 
     def readingDat(self,url):
-        doc = pd.read_csv(url, self.delimiter)
+        doc = pd.read_csv(url, delimiter=self.delimiter)
         return self.setFormatDefault(doc)
     
     
@@ -44,7 +45,7 @@ class ReadingDataSets:
         return self.setFormatDefault(matrix_sin_header)
     
     def readingCsv(self,url):
-        doc = pd.read_csv(url, self.delimiter)
+        doc = pd.read_csv(url, delimiter=self.delimiter)
         return self.setFormatDefault(doc)
     
     def reading(self,url):

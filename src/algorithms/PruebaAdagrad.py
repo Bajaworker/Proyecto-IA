@@ -45,7 +45,7 @@ funcion_SSE=FuncionSSM(matriz_diseño,datos,funcion_error)
 # Configuración del optimizador Adagrad
 adagrad = AlgorithmAdagrad(
     theta=theta,
-    funcion=funcion_ridge,
+    funcion=funcion_SSE,
     tasaDeAprendizaje=0.1,
     Datos=datos,
     lr_decay=0.001,
@@ -69,6 +69,10 @@ print(f"Parámetros optimizados (mini-lote):\n{theta_opt_mini}")
 print("\n--- Optimización en modo 'online' ---")
 theta_opt_online = adagrad.optimizar(modo="online")
 print(f"Parámetros optimizados (online):\n{theta_opt_online}")
+
+print("\n--- Optimización en modo 'lote' ---")
+theta_opt2 = adagrad.optimizar(modo="lote")
+print(f"Parámetros optimizados (lote):\n{theta_opt2}")
 
 # Calcular y comparar errores
 error_inicial = funcion_error.ejecutarFuncion(theta)

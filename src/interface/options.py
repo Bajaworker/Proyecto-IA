@@ -54,7 +54,7 @@ direccion_carpetas_datos = {
             "text":"Microchips",
             "options":[
                 {
-                    "id":"src/datasets/classification/Microchips/microchips_dataset.txt",
+                    "id":"C:/Users/benit/PycharmProjects/Proyecto-IA2/src/datasets/classification/Microchips/microchips_dataset.txt",
                     "text":"microchips_dataset.txt"
                 }
             ],
