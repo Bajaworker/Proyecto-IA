@@ -4,6 +4,7 @@ from src.Dato.Datos import Datos
 from src.Funcion.FuncionError import FuncionError
 from src.Funcion.FuncionMSE import FuncionMSE
 from src.Funcion.FuncionRidge import FuncionRidge
+from src.Funcion.FuncionRosenbrock import FuncionRosenbrock
 from src.Funcion.FuncionSSM import FuncionSSM
 from src.MatrizDiseño.MatrizDiseño import MatrizDiseño
 
@@ -11,7 +12,7 @@ from src.MatrizDiseño.MatrizDiseño import MatrizDiseño
 ruta = "C:/Users/benit/Downloads/challenge1_dataset22 (1).txt"
 
 # Crear instancia de la clase Datos
-datos = Datos(ruta,0.5)
+datos = Datos(ruta,0.5,0)
 
 # Configurar columnas de X e Y (adaptar si cambia el formato del archivo)
 col_inicio_X = 0
@@ -51,6 +52,13 @@ print(funcion_ridge.ejecutarFuncion(theta))
 funcion_ssm = FuncionSSM(matriz_diseño,datos, funcion_error)
 print("\nSSE:")
 print(funcion_ssm.ejecutarFuncion(theta))
+
+funcion_rosenbrock=FuncionRosenbrock()
+theta2=np.array([1,1,1,1])
+resultado_funcion = funcion_rosenbrock.ejecutarFuncion(theta2)
+print("Resultado de la función de Rosenbrock:", resultado_funcion)
+gradiente = funcion_rosenbrock.gradiente(theta2)
+print("Gradiente de la función de Rosenbrock:", gradiente)
 
 
 # Prueba con mini-lotes

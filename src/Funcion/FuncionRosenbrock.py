@@ -5,18 +5,14 @@ class FuncionRosenbrock(Funcion):
     def __init__(self, MatrizDiseño=None,Datos=None):
         super().__init__(MatrizDiseño, Datos)
 
-    def ejecutarFuncion(self, theta, X_Batch=None, Y_Batch=None):
-        z = self.rosenbrock_n_z_numerico(theta.flatten())  # Asegúrate de usar un vector plano
-        return np.sum(z**2)  # Suma de cuadrados de los valores de z
-
-    def gradiente(self, theta, X_Batch=None, Y_Batch=None):
-        return self.gradientePatron(theta.flatten()).reshape(theta.shape)
-
-    def rosenbrock_n_z_numerico(self, X):
+    def rosenbrock_n_z_numerico(self,X):
         n = len(X)
+
         if n % 2 != 0:
             raise ValueError("El tamaño de X debe ser par para la función de Rosenbrock.")
+
         z = np.zeros(n)
+
         for i in range(n // 2):
             xi = X[2 * i]
             xi1 = X[2 * i + 1]
@@ -24,13 +20,7 @@ class FuncionRosenbrock(Funcion):
             z[2 * i + 1] = 1 - xi
         return z
 
-    def gradientePatron(self, X):
-        z = self._rosenbrock_n_z_numerico(X)
-        y = self._matrizJacobienaConPatron(X).T
-        gradiente_P = 2 * (y @ z)
-        return gradiente_P
-
-    def matrizJacobienaConPatron(self, X):
+    def matrizJacobienaConPatron(self,X):
         n = len(X)
         if n % 2 != 0:
             raise ValueError("El tamaño de X debe ser par para la función de Rosenbrock.")
@@ -40,3 +30,24 @@ class FuncionRosenbrock(Funcion):
             matriz[2 * i, 2 * i + 1] = 10
             matriz[2 * i + 1, 2 * i] = -1
         return matriz
+
+    def ejecutarFuncion(self,theta,X_Batch=None,Y_Batch=None):
+        z = self.rosenbrock_n_z_numerico(theta)
+        funcion_objetivoVector = z * z.T
+        suma = 0
+        for i in range(len(funcion_objetivoVector)):
+            suma = suma + funcion_objetivoVector[i]
+        return suma
+
+
+    def gradiente(self,theta,X_Batch=None,Y_Batch=None):
+        z = self.rosenbrock_n_z_numerico(theta)
+        y = self.matrizJacobienaConPatron(theta).T
+        gradiente_P = 2 * (y @ z)
+        return gradiente_P
+
+
+
+
+
+

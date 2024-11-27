@@ -6,6 +6,9 @@ class Funcion(ABC):
         self.MatrizDiseño=MatrizDiseño
         self.Datos=Datos
 
+    def setDatos(self,Datos):
+        self.Datos=Datos
+
 
     @abstractmethod
     def ejecutarFuncion(self,theta,X_Batch,Y_Batch):

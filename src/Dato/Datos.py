@@ -1,19 +1,25 @@
 import numpy as np
 class Datos:
-    def __init__(self,ruta,porcentajeDedatos):
+    def __init__(self,ruta,porcentajeDedatos,inversar):
         self.ruta = ruta
         self.X=None
         self.Y=None
         self.porcentajeDedatos=porcentajeDedatos
-        ## para implementar la otras forma, es necesario infresar un parametro de que si es invesor o no, si es inverso, entoces podemos aplicar la obtenercion de inverso para que aplicar obtener datos XyY de test
-        ###Agregar un nuevo atributo que podemos permite que obtener la datos de test si la porcentajeDeDatos es diferentes a la 1
-###self.Ytest y self.Xtest o otros forma es podemos separar crear un datos llamado datos de entrenamiento y datos de test
+        self.inversar = inversar
     def definirXY(self,colIniciaX,colFinalX,colIniciaY,colFinalY,tipoSeparacion):
         try:
             dato = np.loadtxt(self.ruta, delimiter=tipoSeparacion)
             datosTomado = int(dato.shape[0] * self.porcentajeDedatos)
-            self.X = dato[:datosTomado, colIniciaX:colFinalX]
-            self.Y = dato[:datosTomado, colIniciaY:colFinalY]
+            if self.inversar == 0:
+                # Datos de entrenamiento
+                self.X = dato[:datosTomado, colIniciaX:colFinalX]
+                self.Y = dato[:datosTomado, colIniciaY:colFinalY]
+            elif self.inversar == 1:
+                # Datos de prueba
+                self.X = dato[datosTomado:, colIniciaX:colFinalX]
+                self.Y = dato[datosTomado:, colIniciaY:colFinalY]
+            else:
+                raise ValueError("El parámetro 'inversar' debe ser 0 (entrenamiento) o 1 (prueba).")
         except Exception as e:
             print(f"Error al cargar el archivo: {e}")
 

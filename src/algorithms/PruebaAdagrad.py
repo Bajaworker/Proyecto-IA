@@ -14,7 +14,7 @@ ruta = "C:/Users/benit/Downloads/challenge1_dataset22 (1).txt"
 ruta2="C:/Users/benit/Downloads/energyefficiency_dataset.txt"
 
 # Crear instancia de la clase Datos
-datos = Datos(ruta2, 0.5)
+datos = Datos(ruta2, 0.5,0)
 
 # Configurar columnas de X e Y
 col_inicio_X = 0
@@ -30,6 +30,7 @@ datos.definirXY(col_inicio_X, col_final_X, col_inicio_Y, col_final_Y, tipo_separ
 X = datos.getX()
 matriz_diseño = MatrizDiseño(X, grados=1)
 print(matriz_diseño.getMatrizDiseño().shape)
+print(X.shape)
 
 # Inicialización de theta y parámetros
 r, c = datos.renglonColumnaDeY()
@@ -71,9 +72,6 @@ print("\n--- Optimización en modo 'online' ---")
 theta_opt_online = adagrad.optimizar(modo="online")
 print(f"Parámetros optimizados (online):\n{theta_opt_online}")
 
-print("\n--- Optimización en modo 'lote' ---")
-theta_opt2 = adagrad.optimizar(modo="lote")
-print(f"Parámetros optimizados (lote):\n{theta_opt2}")
 
 # Calcular y comparar errores
 error_inicial = funcion_error.ejecutarFuncion(theta)
@@ -89,3 +87,4 @@ print(theta_opt_online.shape)
 print(theta_opt.shape)
 print(theta_opt_mini.shape)
 print(matriz_diseño.getMatrizDiseño().shape)
+print(X.shape)

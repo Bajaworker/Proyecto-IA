@@ -4,7 +4,7 @@ from src.Dato.Datos import Datos
 ruta = "C:/Users/benit/Downloads/challenge1_dataset22 (1).txt"
 
 # Crear instancia de la clase Datos
-datos = Datos(ruta,1)
+datos = Datos(ruta,0.5,0)
 
 # Configurar columnas de X e Y (adaptar si cambia el formato del archivo)
 col_inicio_X = 0
