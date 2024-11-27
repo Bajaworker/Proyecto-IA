@@ -14,6 +14,29 @@ class Interface:
         self.tasa_entrenamiento = 0.1
 
         self.configuration_menu = [
+            
+            {
+                "id":"CARPETA_DATOS",
+                "title":"Selecciona el tipo de dato",
+                "options":self.getOptionsCarpetaDatos,
+                "get_option":self.getOption,
+                "set_value":self.setValueCarpetaDatos,
+                "get_value":self.getValueCarpetaDatos
+            },
+            {
+                "id":"URL_DATOS",
+                "title":"Selecciona el tipo de archivo",
+                "options":self.getOptionsUrlDatos,
+                "get_option":self.getOption,
+                "set_value":self.setValueUrlDatos,
+                "get_value":self.getValueUrlDatos
+            },
+            #PEDIR PORCENTAJE DE DATOS
+            #PEDIR SELECCIONAR COLUMNAS X y Y
+
+            #--SE CREA DATOS DE PRUEBA Y TEST
+            #-- MATRIX DE DISENIO CON DATOS DE PRUEBA 
+            #PERDIR GRADO
             {
                 "id":"MODELO",
                 "title":"Selecciona el modelo a usar",
@@ -48,22 +71,30 @@ class Interface:
                 "set_value":self.setValueAlgoritmo,
                 "get_value":self.getValueAlgoritmo
             },
+            # {
+            #     "id":"TECNICA_REGULARIZACION",
+            #     "title":"Selecciona la tecnica de regularización",
+            #     "options":[
+            #         {
+            #             "id":"L1",
+            #             "text":"L1",
+            #         },
+            #         {
+            #             "id":"L2",
+            #             "text":"L2",
+            #         },
+            #     ],
+            #     "get_option":self.getOption,
+            #     "set_value":self.setValueTecnicaRegularizacion,
+            #     "get_value":self.getValueTecnicaRegularizacion
+            # },
             {
-                "id":"TECNICA_REGULARIZACION",
-                "title":"Selecciona la tecnica de regularización",
-                "options":[
-                    {
-                        "id":"L1",
-                        "text":"L1",
-                    },
-                    {
-                        "id":"L2",
-                        "text":"L2",
-                    },
-                ],
+                "id":"METRICA_DESEMPENIO",#FUNCION OBJETIVO
+                "title":"Selecciona la funcion  objetivo",
+                "options":self.getOptionsMetricasDesempenio,
                 "get_option":self.getOption,
-                "set_value":self.setValueTecnicaRegularizacion,
-                "get_value":self.getValueTecnicaRegularizacion
+                "set_value":self.setValueMetricaDesempenio,
+                "get_value":self.getValueMetricaDesempenio
             },
             {
                 "id":"FORMA_DE_APRENDIZAJE",
@@ -86,30 +117,8 @@ class Interface:
                 "set_value":self.setValueFormaAprendizaje,
                 "get_value":self.getValueFormaAprendizaje
             },
-            {
-                "id":"METRICA_DESEMPENIO",
-                "title":"Selecciona la métrica de desempeño",
-                "options":self.getOptionsMetricasDesempenio,
-                "get_option":self.getOption,
-                "set_value":self.setValueMetricaDesempenio,
-                "get_value":self.getValueMetricaDesempenio
-            },
-            {
-                "id":"CARPETA_DATOS",
-                "title":"Selecciona el tipo de dato",
-                "options":self.getOptionsCarpetaDatos,
-                "get_option":self.getOption,
-                "set_value":self.setValueCarpetaDatos,
-                "get_value":self.getValueCarpetaDatos
-            },
-            {
-                "id":"URL_DATOS",
-                "title":"Selecciona el tipo de archivo",
-                "options":self.getOptionsUrlDatos,
-                "get_option":self.getOption,
-                "set_value":self.setValueUrlDatos,
-                "get_value":self.getValueUrlDatos
-            }
+            #METRICA DE DESEMPENIO 
+
         ]
 
     def setValueModelo(self,value):
