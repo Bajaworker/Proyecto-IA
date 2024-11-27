@@ -1,3 +1,5 @@
+url = "C:/Users/benit/PycharmProjects/Proyecto-IA2/"
+
 direccion_carpetas_datos = {
     "REGRESION":{
         "ENGINE_BEHAVIOR":{
@@ -5,7 +7,7 @@ direccion_carpetas_datos = {
             "text":"Engine behavior",
             "options":[
                 {
-                    "id":"src/datasets/regression/Engine Behavior/engine_dataset.mat",
+                    "id":url+"src/datasets/regression/Engine Behavior/engine_dataset.mat",
                     "text":"engine_dataset.mat"
                 },
             ],
@@ -15,7 +17,7 @@ direccion_carpetas_datos = {
             "text":"Concrete Compressive Strength",
             "options":[
                 {
-                    "id":"src/datasets/regression/Concrete Compressive Strength/Concrete_Data.xls",
+                    "id":url+"src/datasets/regression/Concrete Compressive Strength/Concrete_Data.xls",
                     "text":"Concrete_Data.xls"
                 }
             ],
@@ -25,23 +27,23 @@ direccion_carpetas_datos = {
             "text":"Gas Turbine Emission",
             "options":[
                 {
-                    "id":"src/datasets/regression/Gas Turbine Emission/gt_2011.csv",
+                    "id":url+"src/datasets/regression/Gas Turbine Emission/gt_2011.csv",
                     "text":"gt_2011.csv"
                 },
                                 {
-                    "id":"src/datasets/regression/Gas Turbine Emission/gt_2012.csv",
+                    "id":url+"src/datasets/regression/Gas Turbine Emission/gt_2012.csv",
                     "text":"gt_2012.csv"
                 },
                                 {
-                    "id":"src/datasets/regression/Gas Turbine Emission/gt_2013.csv",
+                    "id":url+"src/datasets/regression/Gas Turbine Emission/gt_2013.csv",
                     "text":"gt_2013.csv"
                 },
                                 {
-                    "id":"src/datasets/regression/Gas Turbine Emission/gt_2014.csv",
+                    "id":url+"src/datasets/regression/Gas Turbine Emission/gt_2014.csv",
                     "text":"gt_2014.csv"
                 },
                                 {
-                    "id":"src/datasets/regression/Gas Turbine Emission/gt_2015.csv",
+                    "id":url+"src/datasets/regression/Gas Turbine Emission/gt_2015.csv",
                     "text":"gt_2015.csv"
                 },
 
@@ -54,7 +56,7 @@ direccion_carpetas_datos = {
             "text":"Microchips",
             "options":[
                 {
-                    "id":"C:/Users/benit/PycharmProjects/Proyecto-IA2/src/datasets/classification/Microchips/microchips_dataset.txt",
+                    "id":url+"src/datasets/classification/Microchips/microchips_dataset.txt",
                     "text":"microchips_dataset.txt"
                 }
             ],
@@ -64,7 +66,7 @@ direccion_carpetas_datos = {
             "text":"Breast cancer",
             "options":[
                 {
-                    "id":"src/datasets/classification/Breast cancer/cancer_dataset.dat",
+                    "id":url+"src/datasets/classification/Breast cancer/cancer_dataset.dat",
                     "text":"cancer_dataset.dat"
                 }
             ],
@@ -74,7 +76,7 @@ direccion_carpetas_datos = {
             "text":"Dermatology",
             "options":[
                 {
-                    "id":"src/datasets/classification/Dermatology/dermatology.dat",
+                    "id":url+"src/datasets/classification/Dermatology/dermatology.dat",
                     "text":"dermatology.dat"
                 }
             ],
