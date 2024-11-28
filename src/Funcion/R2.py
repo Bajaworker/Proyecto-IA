@@ -8,8 +8,9 @@ class R2(Funcion):
 
     def ejecutarFuncion(self,theta,X_Batch=None,Y_Batch=None):
         Y = self.Datos.getY()
-        SSE=self.MatrizDiseño.getMatrizDiseño()@theta
-        Ym=np.mean(Y)
+        Yp=self.MatrizDiseño.getMatrizDiseño()@theta
+        Ym = np.mean(Y)
+        SSE=np.sum((Y-Yp)**2)
         SST = np.sum((Y-Ym)**2)
         R2=1-(SSE/SST)
         return R2
