@@ -18,6 +18,9 @@ class Funcion(ABC):
     def gradiente(self,theta,X_Batch,Y_Batch):
         pass
 
+    def setMatrizDiseño(self,MatrizDiseño):
+        self.MatrizDiseño=MatrizDiseño
+
 
 
 

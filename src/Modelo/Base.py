@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import numpy as np
 
 class Modelo(ABC):
-    def __init__(self, DatosE,DatosT, Metrica, Optimizador,MatrizDiseñoE,MatrizDiseñoT,theta,FuncionError):
+    def __init__(self, DatosE,DatosT, Metrica, Optimizador,MatrizDiseñoE,MatrizDiseñoT,theta):
         self.DatosE = DatosE
         self.DatosT = DatosT
         self.Metrica = Metrica
@@ -10,7 +10,6 @@ class Modelo(ABC):
         self.MatrizDiseñoE = MatrizDiseñoE
         self.MatrizDiseñoT=MatrizDiseñoT
         self.theta = theta
-        self.FuncionError = FuncionError
 
     @abstractmethod
     def predecir(self, theta):

@@ -88,12 +88,3 @@ print(R2E)
 print("R2 despues de test")
 print(R2T)
 
-
-
-
-
-
-
-
-
-
