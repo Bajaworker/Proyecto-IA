@@ -5,8 +5,8 @@ from scipy.io import loadmat
 
 class ReadingDataSets:
 
-    def __init__(self):
-        self.delimiter = ","
+    def __init__(self,delimiter):
+        self.delimiter = delimiter
     
     def setFormatDefault(self,data):
         
@@ -14,10 +14,11 @@ class ReadingDataSets:
 
         rows, columns = data.shape
 
-        return{"colums":columns,"rows":rows,"data":data}
+        return{"data":data}
     
     def readingTxt(self,url):
-        doc = pd.read_csv(url, delimiter=self.delimiter)
+        doc = np.loadtxt(url, delimiter=None)
+
         return self.setFormatDefault(doc)
 
     def readingDat(self,url):
@@ -61,22 +62,6 @@ class ReadingDataSets:
         }
 
         return options[extension](url)
-    
-    def normalizarDatosX(self,ymin,ymax):
-        if self.X is None:
-            raise ValueError("Los datos de X no están definidos. Usa definirXY() primero.")
-
-        X_min=self.X.min(axis=0)
-        X_max=self.X.max(axis=0)
-        self.X=((ymax - ymin) * (self.X - X_min) / (X_max - X_min)) + ymin
-        return self.X
-    
-    def desNormalizarDatosX(self, X_min, X_max, ymin, ymax):
-        if self.X is None:
-            raise ValueError("Los datos de X no están definidos. Usa definirXY() primero.")
-
-        self.X = ((X_max - X_min) * (self.X - ymin) / (ymax - ymin)) + X_min
-        return self.X
 
 
 

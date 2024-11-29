@@ -1,5 +1,4 @@
 from src.Modelo.Base import Modelo
-from src.algorithms.PruebaAdagrad import matriz_diseño
 
 
 class ModeloRegresion(Modelo):

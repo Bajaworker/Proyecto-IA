@@ -12,9 +12,10 @@ class Interface:
         self.carperta_datos = None
         self.url_datos = None
         self.tasa_entrenamiento = 0.1
+        self.porcentaje_datos= None
 
         self.configuration_menu = [
-                        {
+            {
                 "id":"MODELO",
                 "title":"Selecciona el modelo a usar",
                 "options":[
@@ -117,6 +118,28 @@ class Interface:
                 "set_value":self.setValueFormaAprendizaje,
                 "get_value":self.getValueFormaAprendizaje
             },
+            {
+                "id":"PORCENTAJE_DATOS",
+                "title":"Selecciona el porcentaje de datos a entrenar",
+                "options":[
+                    {
+                        "id":0.4,
+                        "text":"40%"
+                    },
+                                        {
+                        "id":0.6,
+                        "text":"60%"
+                    },
+                    {
+                        "id":0.8,
+                        "text":"80%"
+                    },
+
+                ],
+                "get_option":self.getOption,
+                "set_value":self.setValuePorcentajeDatos,
+                "get_value":self.getValuePorcentajeDatos
+            },
             #METRICA DE DESEMPENIO 
 
         ]
@@ -124,6 +147,8 @@ class Interface:
     def setValueModelo(self,value):
         self.modelo_seleccionado = value
 
+    def setValuePorcentajeDatos(self,value):
+        self.porcentaje_datos = value
     def setValueAlgoritmo(self,value):
         self.algorithms_seleccionado = value
 
@@ -144,7 +169,10 @@ class Interface:
     
     def getValueModelo(self):
         return self.modelo_seleccionado
-    
+
+    def getValuePorcentajeDatos(self):
+        return self.porcentaje_datos
+
     def getValueAlgoritmo(self):
         return self.algorithms_seleccionado
 
@@ -208,7 +236,8 @@ class Interface:
             "METRICA_DE_DESEMPENIO":self.metrica_desempenio,
             "CAPERTA_DE_DATOS":self.carperta_datos,
             "URL_DE_DATOS":self.url_datos,
-            "TASA_DE_ENTRENAMIENTO":self.tasa_entrenamiento
+            "TASA_DE_ENTRENAMIENTO":self.tasa_entrenamiento,
+            "PORCENTAJE_DATOS":self.porcentaje_datos
         }
         print("************************************")
         print("\n")
