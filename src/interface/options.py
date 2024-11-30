@@ -152,18 +152,18 @@ options_metricas_desempenio = {
                 "id":"SSE",
                 "text":"SSE",
             },
-            {
-                "id":"MSE",
-                "text":"MSE",
-            },
+            # {
+            #     "id":"MSE",
+            #     "text":"MSE",
+            # },
             {
                 "id":"RMSE",
                 "text":"RMSE",
             },
-            {
-                "id":"R2",
-                "text":"R2",
-            }
+            # {
+            #     "id":"R2",
+            #     "text":"R2",
+            # }
     ],
     "CLASIFICACION":[
             {

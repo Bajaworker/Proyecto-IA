@@ -65,11 +65,6 @@ class Interface:
                 "set_value":self.setValueUrlDatos,
                 "get_value":self.getValueUrlDatos
             },
-            #PEDIR PORCENTAJE DE DATOS
-            #PEDIR SELECCIONAR COLUMNAS X y Y
-
-            #--SE CREA DATOS DE PRUEBA Y TEST
-            #-- MATRIX DE DISENIO CON DATOS DE PRUEBA 
             #PERDIR GRADO
 
             # {

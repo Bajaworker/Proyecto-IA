@@ -33,9 +33,74 @@ class proyectoIA(Interface):
         self.ESTRUCTURA_DATOS = self.variablesSeleccionadas["ESTRUCTURA_DATOS"]
         self.PORCENTAJE = self.variablesSeleccionadas["PORCENTAJE_DATOS"]
         
-        self.init_modelo()
+        self.init_model()
+    
 
-    def init_modelo(self):
+    def init_model(self):
+        match self.MODELO:
+            case "REGRESION":
+                self.model_regresion()
+            case "CLASIFICACION":
+                print("MODELO SELECCIONADO NO DISPONIBLE")
+                sys.error()
+
+        return
+
+    def getAlgoritmo(self,theta,funtion):
+        match self.ALGORITMO:
+            case "ADAGRAD":
+                adagrad = AlgorithmAdagrad(
+                    theta=theta,
+                    funcion=funtion,
+                    tasaDeAprendizaje=0.1,
+                    Datos=self.DATOS_ENTRENAR,
+                    lr_decay=0.001,
+                    peso_decay=0.1,
+                    epsilon=1e-8,
+                    epoca=1000,
+                    steps=100,
+                    tolerancia=1e-6
+                )
+
+                return adagrad
+            case "SGD_U_CLIP":
+                print("ALGORITMO SELECCIONADO NO DISPONIBLE")
+                sys.error()
+        return
+
+    def getFormaDeAprendizajeRegresion(self,algoritmo):
+        match self.FORMA_DE_APRENDIZAJE:
+            case "ONLINE":
+                algoritmo.optimizar(modo="online")
+            case "BATCH":
+                algoritmo.optimizar(modo="lote")
+            case "MINI_BATCH":
+                algoritmo.optimizar(modo="mini-lote",tamañoDeLote=100)
+            case _:
+                print("FORMA DE APRENDIZAJE NO DEFINIDA")
+                sys.error()
+
+    def getMetricasDesempenioRegresion(self,matrix_disenio_entrenar):
+        landa = 0.5
+        # Crear funciones de evaluación
+        funcion_error = FuncionError(matrix_disenio_entrenar, self.DATOS_ENTRENAR)
+        funcion_mse = FuncionMSE(matrix_disenio_entrenar, self.DATOS_ENTRENAR, funcion_error)
+        funcionObjetivo = None
+
+        match self.METRICA_DE_DESEMPENIO:
+            case "SSE":
+                funcion_SSE = FuncionSSM(matrix_disenio_entrenar,self.DATOS_ENTRENAR,funcion_error)                
+                funcionObjetivo = funcion_SSE
+            case "RMSE":
+                funcion_ridge = FuncionRidge(matrix_disenio_entrenar, self.DATOS_ENTRENAR, funcion_mse, landa)
+                funcionObjetivo = funcion_ridge
+            case _:
+                print("METRICA DESEMPENIO NO DEFINIDA")
+                sys.error()
+        
+        return funcionObjetivo
+    
+    def model_regresion(self):
 
         self.DATOS_ENTRENAR = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=0,delimiter=None)
         self.DATOS_PRUEBA = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=1,delimiter=None)
@@ -57,31 +122,25 @@ class proyectoIA(Interface):
         r, c = self.DATOS_ENTRENAR.renglonColumnaDeY()
         theta = np.random.rand(matrix_disenio_entrenar.getTamañoParametro(), c)
         print(theta.shape)
-        landa = 0.5
 
-        # Crear funciones de evaluación
-        funcion_error = FuncionError(matrix_disenio_entrenar, self.DATOS_ENTRENAR)
-        funcion_mse = FuncionMSE(matrix_disenio_entrenar, self.DATOS_ENTRENAR, funcion_error)
-        funcion_ridge = FuncionRidge(matrix_disenio_entrenar, self.DATOS_ENTRENAR, funcion_mse, landa)
-        funcion_SSE=FuncionSSM(matrix_disenio_entrenar,self.DATOS_ENTRENAR,funcion_error)
         r2=R2(matrix_disenio_entrenar,self.DATOS_ENTRENAR)
+
         Yp=matrix_disenio_entrenar.getMatrizDiseño()@theta
         YpT=matrix_disenio_prueba.getMatrizDiseño()@theta
 
-        adagrad = AlgorithmAdagrad(
-            theta=theta,
-            funcion=funcion_SSE,
-            tasaDeAprendizaje=0.1,
-            Datos=self.DATOS_ENTRENAR,
-            lr_decay=0.001,
-            peso_decay=0.1,
-            epsilon=1e-8,
-            epoca=1000,
-            steps=100,
-            tolerancia=1e-6
-        )
+        funcionObjectivo = self.getMetricasDesempenioRegresion(matrix_disenio_entrenar=matrix_disenio_entrenar)
 
-        regresion=ModeloRegresion(self.DATOS_ENTRENAR,self.DATOS_PRUEBA,r2,adagrad,matrix_disenio_entrenar,matrix_disenio_prueba,theta)
+        algoritmo = self.getAlgoritmo(theta=theta,funtion=funcionObjectivo)
+
+        self.getFormaDeAprendizajeRegresion(algoritmo=algoritmo)
+
+        regresion = ModeloRegresion(DatosE=self.DATOS_ENTRENAR,
+                                  DatosT=self.DATOS_PRUEBA,
+                                  Metrica=r2,
+                                  Optimizador=algoritmo,
+                                  MatrizDiseñoE=matrix_disenio_entrenar,
+                                  MatrizDiseñoT=matrix_disenio_prueba,
+                                  theta=theta)
 
         print("theta ante de entrenamiento")
         print(theta)
