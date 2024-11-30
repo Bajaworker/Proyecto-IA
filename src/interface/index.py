@@ -235,7 +235,8 @@ class Interface:
             "FORMA_DE_APRENDIZAJE":self.forma_aprendizaje,
             "METRICA_DE_DESEMPENIO":self.metrica_desempenio,
             "CAPERTA_DE_DATOS":self.carperta_datos,
-            "URL_DE_DATOS":self.url_datos,
+            "URL_DE_DATOS":self.url_datos["url"],
+            "ESTRUCTURA_DATOS":self.url_datos["structure"],
             "TASA_DE_ENTRENAMIENTO":self.tasa_entrenamiento,
             "PORCENTAJE_DATOS":self.porcentaje_datos
         }

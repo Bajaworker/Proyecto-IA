@@ -7,10 +7,11 @@ from src.reading.index  import ReadingDataSets
 
 class EstructuraDatos(ReadingDataSets):
 
-    def __init__(self,ruta,porcentaje,inversar,delimiter):
+    def __init__(self,ruta,estructura_datos,porcentaje,inversar,delimiter):
         super().__init__(delimiter)
 
         self.ruta = ruta
+        self.estructura_datos = estructura_datos
         self.porcentaje=porcentaje
         self.inversar = inversar
 
@@ -18,31 +19,45 @@ class EstructuraDatos(ReadingDataSets):
         self.Y=None
 
     def definirXY(self):
-        #DATOS DE PRUEBA, FALTA AGREGAR COLUMNS POR ARCHIVO
-        colIniciaX = 0
-        colFinalX = 8
-        colIniciaY = 8
-        colFinalY = None
-
         try:
             dato = self.reading(self.ruta)
 
-            dato = dato["data"]
+            type = self.estructura_datos["type"]
 
-            datosTomado = int(dato.shape[0] * self.porcentaje)
-
-            if self.inversar == 0:
-                # Datos de entrenamiento
-                self.X = dato[:datosTomado, colIniciaX:colFinalX]
-                self.Y = dato[:datosTomado, colIniciaY:colFinalY]
-            elif self.inversar == 1:
-                # Datos de prueba
-                self.X = dato[datosTomado:, colIniciaX:colFinalX]
-                self.Y = dato[datosTomado:, colIniciaY:colFinalY]
-            else:
-                raise ValueError("El parámetro 'inversar' debe ser 0 (entrenamiento) o 1 (prueba).")
+            match type:
+                case "TABLE_DEFAULT":
+                    self.getDataTableDefault(dato=dato["data"],columns_x=self.estructura_datos["columns_x"],columns_y=self.estructura_datos["columns_y"])
+                case "TABLE_SPLIT":
+                    self.getDataTableSplit(data_x=dato["x"],data_y=dato["y"])
+                case _:
+                    print("LA ESTRUCTURA NO ESTA DEFINIDA EN EL CASE")
+                    sys.error()
         except Exception as e:
             print(f"Error al cargar el archivo: {e}")
+
+    def getDataTableDefault(self,dato,columns_x,columns_y):
+        datosTomado = int(dato.shape[0] * self.porcentaje)
+        
+        if self.inversar == 0:
+            # Datos de entrenamiento
+            self.X = dato[:datosTomado, columns_x[0]:columns_x[1]]
+            self.Y = dato[:datosTomado, columns_y[0]:columns_y[1]]
+        else:
+            # Datos de prueba
+            self.X = dato[datosTomado:, columns_x[0]:columns_x[1]]
+            self.Y = dato[datosTomado:, columns_y[0]:columns_y[1]]
+
+    def getDataTableSplit(self,data_x,data_y):
+        datosTomado = int(data_x.shape[0] * self.porcentaje)
+        
+        if self.inversar == 0:
+            # Datos de entrenamiento
+            self.X = data_x[:datosTomado]
+            self.Y = data_y[:datosTomado]
+        else:
+            # Datos de prueba
+            self.X = data_x[datosTomado:]
+            self.Y = data_y[datosTomado:]
 
     def getX(self):
         return self.X

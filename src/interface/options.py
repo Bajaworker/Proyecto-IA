@@ -1,5 +1,5 @@
 url = "C:/Users/benit/PycharmProjects/Proyecto-IA2/"
-
+url = ""
 direccion_carpetas_datos = {
     "REGRESION":{
         "ENGINE_BEHAVIOR":{
@@ -7,7 +7,12 @@ direccion_carpetas_datos = {
             "text":"Engine behavior",
             "options":[
                 {
-                    "id":url+"src/datasets/regression/Engine Behavior/engine_dataset.mat",
+                    "id":{
+                        "url":url+"src/datasets/regression/Engine Behavior/engine_dataset.mat",
+                        "structure":{
+                            "type":"TABLE_SPLIT",
+                        }
+                    },
                     "text":"engine_dataset.mat"
                 },
             ],
@@ -17,7 +22,14 @@ direccion_carpetas_datos = {
             "text":"Concrete Compressive Strength",
             "options":[
                 {
-                    "id":url+"src/datasets/regression/Concrete Compressive Strength/Concrete_Data.xls",
+                    "id":{
+                        "url":url+"src/datasets/regression/Concrete Compressive Strength/Concrete_Data.xls",
+                        "structure":{
+                            "type":"TABLE_DEFAULT",
+                            "columns_x":[0,8],
+                            "columns_y":[8,None]
+                        }
+                    },
                     "text":"Concrete_Data.xls"
                 }
             ],
@@ -27,24 +39,59 @@ direccion_carpetas_datos = {
             "text":"Gas Turbine Emission",
             "options":[
                 {
-                    "id":url+"src/datasets/regression/Gas Turbine Emission/gt_2011.csv",
-                    "text":"gt_2011.csv"
+                    "id":{
+                        "url":url+"src/datasets/regression/Gas Turbine Emission/gt_2011.csv",
+                        "structure":{
+                            "type":"TABLE_DEFAULT",
+                            "columns_x":[0,9],
+                            "columns_y":[9,None]
+                        }
+                    },
+                    "text":"gt_2011.csv",
                 },
-                                {
-                    "id":url+"src/datasets/regression/Gas Turbine Emission/gt_2012.csv",
-                    "text":"gt_2012.csv"
+                {
+                    "id":{
+                        "url":url+"src/datasets/regression/Gas Turbine Emission/gt_2012.csv",
+                        "structure":{
+                            "type":"TABLE_DEFAULT",
+                            "columns_x":[0,9],
+                            "columns_y":[9,None]
+                        }
+                    },
+                    "text":"gt_2012.csv",
                 },
-                                {
-                    "id":url+"src/datasets/regression/Gas Turbine Emission/gt_2013.csv",
-                    "text":"gt_2013.csv"
+                {
+                    "id":{
+                        "url":url+"src/datasets/regression/Gas Turbine Emission/gt_2013.csv",
+                        "structure":{
+                            "type":"TABLE_DEFAULT",
+                            "columns_x":[0,9],
+                            "columns_y":[9,None]
+                        }
+                    },
+                    "text":"gt_2013.csv",
                 },
-                                {
-                    "id":url+"src/datasets/regression/Gas Turbine Emission/gt_2014.csv",
-                    "text":"gt_2014.csv"
+                {
+                    "id":{
+                        "url":url+"src/datasets/regression/Gas Turbine Emission/gt_2014.csv",
+                        "structure":{
+                            "type":"TABLE_DEFAULT",
+                            "columns_x":[0,9],
+                            "columns_y":[9,None]
+                        }
+                    },
+                    "text":"gt_2014.csv",
                 },
-                                {
-                    "id":url+"src/datasets/regression/Gas Turbine Emission/gt_2015.csv",
-                    "text":"gt_2015.csv"
+                {
+                    "id":{
+                        "url":url+"src/datasets/regression/Gas Turbine Emission/gt_2015.csv",
+                        "structure":{
+                            "type":"TABLE_DEFAULT",
+                            "columns_x":[0,9],
+                            "columns_y":[9,None]
+                        }
+                    },
+                    "text":"gt_2015.csv",
                 },
 
             ],
@@ -56,7 +103,12 @@ direccion_carpetas_datos = {
             "text":"Microchips",
             "options":[
                 {
-                    "id":url+"src/datasets/classification/Microchips/microchips_dataset.txt",
+                    "id":{
+                        "url":url+"src/datasets/classification/Microchips/microchips_dataset.txt",
+                        "structure":{
+                            "type":"TABLE_NULL",
+                        }
+                    },
                     "text":"microchips_dataset.txt"
                 }
             ],
@@ -66,7 +118,12 @@ direccion_carpetas_datos = {
             "text":"Breast cancer",
             "options":[
                 {
-                    "id":url+"src/datasets/classification/Breast cancer/cancer_dataset.dat",
+                    "id":{
+                        "url":url+"src/datasets/classification/Breast cancer/cancer_dataset.dat",
+                        "structure":{
+                            "type":"TABLE_NULL",
+                        }
+                    },
                     "text":"cancer_dataset.dat"
                 }
             ],
@@ -76,7 +133,12 @@ direccion_carpetas_datos = {
             "text":"Dermatology",
             "options":[
                 {
-                    "id":url+"src/datasets/classification/Dermatology/dermatology.dat",
+                    "id":{
+                        "url":url+"src/datasets/classification/Dermatology/dermatology.dat",
+                        "structure":{
+                            "type":"TABLE_NULL",
+                        }
+                    },
                     "text":"dermatology.dat"
                 }
             ],

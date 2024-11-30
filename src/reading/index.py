@@ -9,11 +9,7 @@ class ReadingDataSets:
         self.delimiter = delimiter
     
     def setFormatDefault(self,data):
-        
         data = np.array(data)
-
-        rows, columns = data.shape
-
         return{"data":data}
     
     def readingTxt(self,url):
@@ -27,21 +23,19 @@ class ReadingDataSets:
     
     
     def readingMat(self,url):
-        data = loadmat(url)#Verificar Formato
-        return data
-
-        pass
+        data = loadmat(url)
+        return {"x":np.array(data["engineInputs"]).T,"y":np.array(data["engineTargets"]).T}
 
     def readingIdX1Ubyte(self,url):
         pass
 
 
     def readingXls(self,url):
-        doc = pd.read_excel(url, sheet_name="sheet1",header=None)
-
+        # doc = pd.read_excel(url, sheet_name="sheet1",header=None)
+        doc=pd.read_excel(url,engine="xlrd")
         data = np.array(doc)
-
-        matrix_sin_header = data[1:, :]  # Seleccionar desde la fila 1 hasta el final
+        matrix_sin_header=data
+        # matrix_sin_header = data[1:, :]  # Seleccionar desde la fila 1 hasta el final
 
         return self.setFormatDefault(matrix_sin_header)
     

@@ -9,6 +9,7 @@ from src.Funcion.R2 import R2
 from src.algorithms.Adagrad import AlgorithmAdagrad
 from src.Modelo.Regresion import ModeloRegresion
 import numpy as np
+import sys
 
 class proyectoIA(Interface):
     def __init__(self):
@@ -29,16 +30,15 @@ class proyectoIA(Interface):
         self.CAPERTA_DE_DATOS = self.variablesSeleccionadas["CAPERTA_DE_DATOS"]
 
         self.URL_DE_DATOS = self.variablesSeleccionadas["URL_DE_DATOS"]
-        self.URL_DE_DATOS = "C:/Users/DesarrolladorJR/Documents/Proyecto-IA/energyefficiency_dataset.txt"
-
+        self.ESTRUCTURA_DATOS = self.variablesSeleccionadas["ESTRUCTURA_DATOS"]
         self.PORCENTAJE = self.variablesSeleccionadas["PORCENTAJE_DATOS"]
         
         self.init_modelo()
 
     def init_modelo(self):
 
-        self.DATOS_ENTRENAR = EstructuraDatos(ruta=self.URL_DE_DATOS,porcentaje=self.PORCENTAJE,inversar=0,delimiter=None)
-        self.DATOS_PRUEBA = EstructuraDatos(ruta=self.URL_DE_DATOS,porcentaje=self.PORCENTAJE,inversar=1,delimiter=None)
+        self.DATOS_ENTRENAR = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=0,delimiter=None)
+        self.DATOS_PRUEBA = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=1,delimiter=None)
         
         self.DATOS_ENTRENAR.definirXY()
         self.DATOS_PRUEBA.definirXY()
