@@ -80,6 +80,8 @@ class proyectoIA(Interface):
                 print("FORMA DE APRENDIZAJE NO DEFINIDA")
                 sys.error()
 
+
+#Hay la nombre y la orden de la funcion esta algo mal
     def getMetricasDesempenioRegresion(self,matrix_disenio_entrenar):
         landa = 0.5
         # Crear funciones de evaluación
@@ -92,14 +94,15 @@ class proyectoIA(Interface):
                 funcion_SSE = FuncionSSM(matrix_disenio_entrenar,self.DATOS_ENTRENAR,funcion_error)                
                 funcionObjetivo = funcion_SSE
             case "RMSE":
-                funcion_ridge = FuncionRidge(matrix_disenio_entrenar, self.DATOS_ENTRENAR, funcion_mse, landa)
+                funcion_ridge = FuncionRidge(matrix_disenio_entrenar, self.DATOS_ENTRENAR, funcion_mse,landa)
                 funcionObjetivo = funcion_ridge
             case _:
                 print("METRICA DESEMPENIO NO DEFINIDA")
                 sys.error()
         
         return funcionObjetivo
-    
+
+#Ejecutar Correcto
     def model_regresion(self):
 
         self.DATOS_ENTRENAR = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=0,delimiter=None)
@@ -107,6 +110,10 @@ class proyectoIA(Interface):
         
         self.DATOS_ENTRENAR.definirXY()
         self.DATOS_PRUEBA.definirXY()
+
+        #Nomalizar
+        #self.DATOS_PRUEBA.normalizarDatosX(), ha cambiado la funcion de normalizar, ante tomar parametro pero ahora no
+        # self.DATOS_ENTRENAR.normalizarDatosX()
 
         X_ENTRENAR=self.DATOS_ENTRENAR.getX()
         X_PRUEBA=self.DATOS_PRUEBA.getX()
@@ -121,7 +128,6 @@ class proyectoIA(Interface):
         # Inicialización de theta y parámetros
         r, c = self.DATOS_ENTRENAR.renglonColumnaDeY()
         theta = np.random.rand(matrix_disenio_entrenar.getTamañoParametro(), c)
-        print(theta.shape)
 
         r2=R2(matrix_disenio_entrenar,self.DATOS_ENTRENAR)
 
@@ -154,6 +160,9 @@ class proyectoIA(Interface):
         theta=regresion.entrenar()
         print("theta despues de entrenar")
         print(theta)
+        #vuelve a predecir
+        #convieterlanormalizarendesnomalizar (Falta modificar este parte)
+        #ejecuatarR2
 
         R2E,R2T=regresion.calcularMetrica()
         print("R2 despues de entrenar")

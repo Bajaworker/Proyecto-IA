@@ -15,19 +15,25 @@ class FuncionRidge(Funcion):
         else:
             r, c = self.Datos.renglonColumnaDeY()
 
-        theta2 = theta[1:]
+        theta2 = theta[:,1:]
         ridge_penalizacion = (self.landa / (r * c)) * (theta2.T @ theta2)
         ridge = MSE + ridge_penalizacion
         return ridge
 
-    def gradiente(self,theta,X_Batch=None,Y_Batch=None):
+
+    def gradiente(self, theta, X_Batch=None, Y_Batch=None):
         gradienteMSE = self.Funcion.gradiente(theta, X_Batch, Y_Batch)
         if X_Batch is not None:
             r, c = Y_Batch.shape
         else:
             r, c = self.Datos.renglonColumnaDeY()
+        theta2 = theta[:, 1:]
 
-        theta2 = theta[1:]
         gradiente_penalizacion = (2 * self.landa / (r * c)) * theta2
-        gt = gradienteMSE + np.concatenate((np.zeros_like(gradiente_penalizacion[0:1]), gradiente_penalizacion))
+
+        # Crear gradiente completo
+        zeros = np.zeros((theta.shape[0], 1))
+        penalizacion_completa = np.concatenate((zeros, gradiente_penalizacion), axis=1)
+        gt = gradienteMSE + penalizacion_completa
         return gt
+

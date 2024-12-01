@@ -1,4 +1,6 @@
 import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import RobustScaler
 class Datos:
     def __init__(self,ruta,porcentajeDedatos,inversar):
         self.ruta = ruta
@@ -6,18 +8,23 @@ class Datos:
         self.Y=None
         self.porcentajeDedatos=porcentajeDedatos
         self.inversar = inversar
+        self.scalerInputs = None
+        self.scalerTargets = None
     def definirXY(self,colIniciaX,colFinalX,colIniciaY,colFinalY,tipoSeparacion):
         try:
             dato = np.loadtxt(self.ruta, delimiter=tipoSeparacion)
-            datosTomado = int(dato.shape[0] * self.porcentajeDedatos)
+            X=dato[:,colIniciaX:colFinalX]
+            Y=dato[:,colIniciaY:colFinalY]
+            inputs_train, inputs_test, targets_train, targets_test = train_test_split(X,Y,random_state=1, test_size=1-self.porcentajeDedatos)
+
             if self.inversar == 0:
                 # Datos de entrenamiento
-                self.X = dato[:datosTomado, colIniciaX:colFinalX]
-                self.Y = dato[:datosTomado, colIniciaY:colFinalY]
+                self.X = inputs_train
+                self.Y = targets_train
             elif self.inversar == 1:
                 # Datos de prueba
-                self.X = dato[datosTomado:, colIniciaX:colFinalX]
-                self.Y = dato[datosTomado:, colIniciaY:colFinalY]
+                self.X = inputs_test
+                self.Y = inputs_train
             else:
                 raise ValueError("El parámetro 'inversar' debe ser 0 (entrenamiento) o 1 (prueba).")
         except Exception as e:
@@ -29,21 +36,24 @@ class Datos:
     def getY(self):
         return self.Y
 
-    def normalizarDatosX(self,ymin,ymax):
+    def normalizarDatos(self):
         if self.X is None:
             raise ValueError("Los datos de X no están definidos. Usa definirXY() primero.")
+        self.scalerInputs = RobustScaler()
+        self.scalerTargets = RobustScaler()
+        self.X= self.scalerInputs.fit_transform(self.X)
+        self.Y= self.scalerTargets.fit_transform(self.Y)
 
-        X_min=self.X.min(axis=0)
-        X_max=self.X.max(axis=0)
-        self.X=((ymax - ymin) * (self.X - X_min) / (X_max - X_min)) + ymin
-        return self.X
 
-    def desNormalizarDatosX(self, X_min, X_max, ymin, ymax):
-        if self.X is None:
-            raise ValueError("Los datos de X no están definidos. Usa definirXY() primero.")
 
-        self.X = ((X_max - X_min) * (self.X - ymin) / (ymax - ymin)) + X_min
-        return self.X
+    def desNormalizarDatos(self):
+        if self.X is None or self.Y is None:
+            raise ValueError("Los datos no están definidos. Usa definirXY() primero.")
+        if self.scalerInputs is None or self.scalerTargets is None:
+            raise ValueError("Los datos no están normalizados. Usa normalizarDatos() primero.")
+        self.X = self.scalerInputs.inverse_transform(self.X)
+        self.Y = self.scalerTargets.inverse_transform(self.Y)
+
 
     def tamañoDeDatos(self,tipoSeparacion):
         try:
@@ -70,6 +80,12 @@ class Datos:
         if nuevo_porcentaje <= 0 or nuevo_porcentaje > 1:
             raise ValueError("El porcentaje debe ser un valor entre 0 y 1.")
         self.porcentajeDedatos = nuevo_porcentaje
+
+    def getScalaSalida(self):
+        return self.scalerTargets
+
+    def getScalaEntrada(self):
+        return self.scalerInputs
 
 
 

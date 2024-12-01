@@ -47,7 +47,7 @@ funcion_SSE=FuncionSSM(matriz_diseño,datos,funcion_error)
 # Configuración del optimizador Adagrad
 adagrad = AlgorithmAdagrad(
     theta=theta,
-    funcion=funcion_SSE,
+    funcion=funcion_ridge,
     tasaDeAprendizaje=0.1,
     Datos=datos,
     lr_decay=0.001,
@@ -88,3 +88,5 @@ print(theta_opt.shape)
 print(theta_opt_mini.shape)
 print(matriz_diseño.getMatrizDiseño().shape)
 print(X.shape)
+
+

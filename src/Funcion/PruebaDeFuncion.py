@@ -32,6 +32,7 @@ matriz_diseño = (MatrizDiseño(X, grados=1))
 #theta y landa
 theta=np.random.randint(0,1,size=(matriz_diseño.getTamañoParametro(),c))
 landa=0.5
+theta2=[2,3,45,5,6]
 
 # Probar FuncionError
 funcion_error = FuncionError(matriz_diseño,datos)
