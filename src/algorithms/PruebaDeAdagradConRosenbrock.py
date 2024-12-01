@@ -1,3 +1,5 @@
+import numpy as np
+
 from src.Dato.Datos import Datos
 from src.Funcion.FuncionRosenbrock import FuncionRosenbrock
 from src.algorithms.Adagrad import AlgorithmAdagrad
@@ -19,10 +21,11 @@ tipo_separacion = None
 # Definir los datos de X e Y
 datos.definirXY(col_inicio_X, col_final_X, col_inicio_Y, col_final_Y, tipo_separacion)
 
-theta=[-10,10,-10,10,10,10,10,10,10,10]
+theta=10*np.random.rand(100,1)
+theta2=theta.flatten().tolist()
 
 adagrad = AlgorithmAdagrad(
-    theta=theta,
+    theta=theta2,
     funcion=funcion_rosenbrock,
     tasaDeAprendizaje=3,
     Datos=datos,

@@ -75,24 +75,18 @@ class AlgorithmAdagrad(Optimizador):
                 raise ValueError("Modo desconocido: debe ser 'lote', 'mini-lote' o 'online'")
 
             funcionObejtivo = self.funcion.ejecutarFuncion(self.theta)
-            ##if funcionObejtivo < self.tolerancia:
-                ##print(f"Optimización detenida en iteración {t}: Funcion objetivo = {funcionObejtivo}")
-                ##break
+            if funcionObejtivo < self.tolerancia:
+                print(f"Optimización detenida en iteración {t}: Funcion objetivo = {funcionObejtivo}")
+                break
 
             if t % self.steps == 0:
                 print({
                     "iteracion": t,
                     "theta": self.theta,
-                    "gradiente": g_t,
                     "Funcion Objetivo": funcionObejtivo,
                 })
 
         return self.theta
-
-
-
-
-
 
 
 

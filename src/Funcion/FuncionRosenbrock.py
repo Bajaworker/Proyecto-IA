@@ -45,9 +45,3 @@ class FuncionRosenbrock(Funcion):
         y = self.matrizJacobienaConPatron(theta).T
         gradiente_P = 2 * (y @ z)
         return gradiente_P
-
-
-
-
-
-

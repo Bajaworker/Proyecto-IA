@@ -3,11 +3,12 @@ import numpy as np
 from src.algorithms.Base import Optimizador
 
 class SMORMS3(Optimizador):
-    def __init__(self,theta,funcion,tasaDeAprendizaje,Datos,epsilon=1e-8,epoca=1000,steps=100):
+    def __init__(self,theta,funcion,tasaDeAprendizaje,Datos,epsilon=1e-8,epoca=1000,steps=100,tolerancia=1e-16):
         super().__init__(theta,funcion,tasaDeAprendizaje, Datos)
         self.epsilon = epsilon
         self.epoca = epoca
         self.steps = steps
+        self.tolerancia = tolerancia
 
     def optimizar(self, modo="lote", tamañoDeLote=None):
         m_t = self.getValuesInitStateSum()
@@ -24,7 +25,7 @@ class SMORMS3(Optimizador):
                 g_t = self.funcion.gradiente(self.theta)
                 s_t=1+(1-x_t)*s_t
                 p_t=1/(s_t+1)
-                m_t=(1-p_t)*v_t+(p_t*g_t)
+                m_t=(1-p_t)*m_t+(p_t*g_t)
                 v_t =(1-p_t)*v_t+(p_t*g_t ** 2)
                 x_t=m_t**2/(v_t+self.epsilon)
                 paso=(np.minimum(self.tasaDeAprendizaje, x_t)/(np.sqrt(v_t)+self.epsilon))*g_t
@@ -42,7 +43,7 @@ class SMORMS3(Optimizador):
                     g_t = self.funcion.gradiente(self.theta, X_Batch, Y_Batch)
                     s_t = 1 + (1 - x_t) * s_t
                     p_t = 1 / (s_t + 1)
-                    m_t = (1 - p_t) * v_t + (p_t * g_t)
+                    m_t = (1 - p_t) * m_t + (p_t * g_t)
                     v_t = (1 - p_t) * v_t + (p_t * g_t ** 2)
                     x_t = m_t ** 2 / (v_t + self.epsilon)
                     paso = (np.minimum(self.tasaDeAprendizaje, x_t) / (np.sqrt(v_t) + self.epsilon)) * g_t
@@ -53,7 +54,7 @@ class SMORMS3(Optimizador):
                     g_t = self.funcion.gradiente(self.theta, X_Batch, Y_Batch)
                     s_t = 1 + (1 - x_t) * s_t
                     p_t = 1 / (s_t + 1)
-                    m_t = (1 - p_t) * v_t + (p_t * g_t)
+                    m_t = (1 - p_t) * m_t + (p_t * g_t)
                     v_t = (1 - p_t) * v_t + (p_t * g_t ** 2)
                     x_t = m_t ** 2 / (v_t + self.epsilon)
                     paso = (np.minimum(self.tasaDeAprendizaje, x_t) / (np.sqrt(v_t) + self.epsilon)) * g_t
@@ -66,7 +67,7 @@ class SMORMS3(Optimizador):
                     g_t = self.funcion.gradiente(self.theta, X_Batch, Y_Batch)
                     s_t = 1 + (1 - x_t) * s_t
                     p_t = 1 / (s_t + 1)
-                    m_t = (1 - p_t) * v_t + (p_t * g_t)
+                    m_t = (1 - p_t) * m_t + (p_t * g_t)
                     v_t = (1 - p_t) * v_t + (p_t * g_t ** 2)
                     x_t = m_t ** 2 / (v_t + self.epsilon)
                     paso = (np.minimum(self.tasaDeAprendizaje, x_t) / (np.sqrt(v_t) + self.epsilon)) * g_t
@@ -75,13 +76,21 @@ class SMORMS3(Optimizador):
             else:
                 raise ValueError("Modo desconocido: debe ser 'lote', 'mini-lote' o 'online'")
 
+            funcionObejtivo = self.funcion.ejecutarFuncion(self.theta)
+            if funcionObejtivo < self.tolerancia:
+                print(f"Optimización detenida en iteración {t}: Funcion objetivo = {funcionObejtivo}")
+                break
+
             if t % self.steps == 0:
                 print({
                     "iteracion": t,
                     "theta": self.theta,
-                    "gradiente": g_t,
+                    "Funcion Objetivo": funcionObejtivo,
                 })
 
         return self.theta
+
+
+
 
 

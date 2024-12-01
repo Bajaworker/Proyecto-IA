@@ -16,6 +16,7 @@ class ModeloRegresion(Modelo):
         theta=self.Optimizador.optimizar()
         self.theta=theta
         return self.theta
+    #Modificar para que acepta la normalizar
 
     def calcularMetrica(self):
         R2E=self.Metrica.ejecutarFuncion(self.theta)

@@ -56,7 +56,7 @@ YpT=matrizDiseñoTest.getMatrizDiseño()@theta
 
 adagrad = AlgorithmAdagrad(
     theta=theta,
-    funcion=funcion_SSE,
+    funcion=funcion_ridge,
     tasaDeAprendizaje=0.1,
     Datos=datosE,
     lr_decay=0.001,

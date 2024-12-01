@@ -94,6 +94,8 @@ class proyectoIA(Interface):
                 print("FORMA DE APRENDIZAJE NO DEFINIDA")
                 sys.error()
 
+
+#Hay la nombre y la orden de la funcion esta algo mal
     def getMetricasDesempenioRegresion(self,matrix_disenio_entrenar):
         landa = 0.5
         # Crear funciones de evaluación
@@ -106,14 +108,15 @@ class proyectoIA(Interface):
                 funcion_SSE = FuncionSSM(matrix_disenio_entrenar,self.DATOS_ENTRENAR,funcion_error)                
                 funcionObjetivo = funcion_SSE
             case "RMSE":
-                funcion_ridge = FuncionRidge(matrix_disenio_entrenar, self.DATOS_ENTRENAR, funcion_mse, landa)
+                funcion_ridge = FuncionRidge(matrix_disenio_entrenar, self.DATOS_ENTRENAR, funcion_mse,landa)
                 funcionObjetivo = funcion_ridge
             case _:
                 print("METRICA DESEMPENIO NO DEFINIDA")
                 sys.error()
         
         return funcionObjetivo
-    
+
+#Ejecutar Correcto
     def model_regresion(self):
 
         self.DATOS_ENTRENAR = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=0,delimiter=self.ESTRUCTURA_DATOS["delimiter"])
@@ -121,6 +124,29 @@ class proyectoIA(Interface):
         
         self.DATOS_ENTRENAR.definirXY()
         self.DATOS_PRUEBA.definirXY()
+
+        #Nomalizar
+        #self.DATOS_PRUEBA.normalizarDatosX(), ha cambiado la funcion de normalizar, ante tomar parametro pero ahora no
+        # self.DATOS_ENTRENAR.normalizarDatosX()
+
+
+        # Entradas y objetivos de normalización de datos
+        # Inicializar RobustScaler
+        scalerInputs  = RobustScaler()
+        scalerTargets = RobustScaler()
+        # Transformar los datos
+        robust_scaled_Inputs  = scalerInputs.fit_transform(self.DATOS_ENTRENAR.getAllColumnsX())
+        robust_scaled_Targets = scalerTargets.fit_transform(self.DATOS_ENTRENAR.getAllColumnsY())
+
+        # Datos divididos de entrenamiento y prueba
+        inputs_train, inputs_test, targets_train, targets_test = train_test_split(robust_scaled_Inputs, robust_scaled_Targets, random_state = 1, test_size = self.PORCENTAJE)
+
+
+        self.DATOS_ENTRENAR.setX(inputs_train)
+        self.DATOS_ENTRENAR.setY(targets_train)
+
+        self.DATOS_PRUEBA.setX(inputs_test)
+        self.DATOS_PRUEBA.setY(targets_test)
 
 
         # Entradas y objetivos de normalización de datos
@@ -154,7 +180,6 @@ class proyectoIA(Interface):
         # Inicialización de theta y parámetros
         r, c = self.DATOS_ENTRENAR.renglonColumnaDeY()
         theta = np.random.rand(matrix_disenio_entrenar.getTamañoParametro(), c)
-        print(theta.shape)
 
         r2=R2(matrix_disenio_entrenar,self.DATOS_ENTRENAR)
 
@@ -187,31 +212,36 @@ class proyectoIA(Interface):
         theta=regresion.entrenar()
         print("theta despues de entrenar")
         print(theta)
+        #vuelve a predecir
+        #convieterlanormalizarendesnomalizar (Falta modificar este parte)
+        #ejecuatarR2
+
+        Yp,YpT=regresion.predecir()
 
         # # Transformación inversa en RobustScaler
         # # Transformación inversa de los datos de entrenamiento para las salidas
-        # yTrain = scalerTargets.inverse_transform(targets_train)
-        # yhTrain = scalerTargets.inverse_transform(Yp)
+        yTrain = scalerTargets.inverse_transform(targets_train)
+        yhTrain = scalerTargets.inverse_transform(Yp)
 
         # # Transformación inversa de los datos de prueba para las salidas
-        # yTest  = scalerTargets.inverse_transform(targets_test)
-        # yhTest = scalerTargets.inverse_transform(YpT)
+        yTest  = scalerTargets.inverse_transform(targets_test)
+        yhTest = scalerTargets.inverse_transform(YpT)
 
         # # R2 for raw train data
-        # R2_train = r2_score(yTrain.reshape(-1, 1),yhTrain.reshape(-1, 1))
-        # print("R2 despues de entrenar")
-        # print(R2_train)
+        R2_train = r2_score(yTrain.reshape(-1, 1),yhTrain.reshape(-1, 1))
+        print("R2 despues de entrenar")
+        print(R2_train)
 
         # # R2 for raw test data
-        # R2_test = r2_score(yTest.reshape(-1, 1),yhTest.reshape(-1, 1))
-        # print("R2 despues de test")
-        # print(R2_test)
-
-        R2E,R2T=regresion.calcularMetrica()
-        print("R2 despues de entrenar")
-        print(R2E)
+        R2_test = r2_score(yTest.reshape(-1, 1),yhTest.reshape(-1, 1))
         print("R2 despues de test")
-        print(R2T)
+        print(R2_test)
+
+        # R2E,R2T=regresion.calcularMetrica()
+        # print("R2 despues de entrenar")
+        # print(R2E)
+        # print("R2 despues de test")
+        # print(R2T)
 
 
 

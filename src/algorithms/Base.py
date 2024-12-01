@@ -8,6 +8,9 @@ class Optimizador(ABC):
         self.tasaDeAprendizaje = tasaDeAprendizaje
         self.Datos=Datos
 
+
+
+
     def getValuesInitStateSum(self):
         dimensiones = self.theta.shape
         if len(dimensiones) == 1:
@@ -15,6 +18,6 @@ class Optimizador(ABC):
         return np.zeros((dimensiones[0], dimensiones[1]), dtype=np.float64)
 
     @abstractmethod
-    def optimizar(self, modo="lote", tamañoDeLote=None):
+    def optimizar(self):
         pass
 
