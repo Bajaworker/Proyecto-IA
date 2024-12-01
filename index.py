@@ -1,3 +1,5 @@
+import numpy as np
+import sys
 from src.interface.index import Interface
 from src.reading.estructura_datos import EstructuraDatos
 from src.MatrizDiseño.MatrizDiseño import MatrizDiseño
@@ -8,8 +10,11 @@ from src.Funcion.FuncionSSM import FuncionSSM
 from src.Funcion.R2 import R2
 from src.algorithms.Adagrad import AlgorithmAdagrad
 from src.Modelo.Regresion import ModeloRegresion
-import numpy as np
-import sys
+from src.algorithms.SDGConClic import AlgoritmoSDGWithClic
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import RobustScaler
+from sklearn.metrics import r2_score
+from sklearn.metrics import mean_squared_error
 
 class proyectoIA(Interface):
     def __init__(self):
@@ -31,6 +36,7 @@ class proyectoIA(Interface):
 
         self.URL_DE_DATOS = self.variablesSeleccionadas["URL_DE_DATOS"]
         self.ESTRUCTURA_DATOS = self.variablesSeleccionadas["ESTRUCTURA_DATOS"]
+
         self.PORCENTAJE = self.variablesSeleccionadas["PORCENTAJE_DATOS"]
         
         self.init_model()
@@ -64,8 +70,16 @@ class proyectoIA(Interface):
 
                 return adagrad
             case "SGD_U_CLIP":
-                print("ALGORITMO SELECCIONADO NO DISPONIBLE")
-                sys.error()
+                SDGWithClic = AlgoritmoSDGWithClic(
+                    Datos=self.DATOS_ENTRENAR, 
+                    theta=theta,
+                    funcion=funtion,
+                    tasaDeAprendizaje=0.01,
+                    epoca=100000,
+                    steps=10000,
+                    gamma=2
+                )
+                return SDGWithClic
         return
 
     def getFormaDeAprendizajeRegresion(self,algoritmo):
@@ -102,11 +116,30 @@ class proyectoIA(Interface):
     
     def model_regresion(self):
 
-        self.DATOS_ENTRENAR = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=0,delimiter=None)
-        self.DATOS_PRUEBA = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=1,delimiter=None)
+        self.DATOS_ENTRENAR = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=0,delimiter=self.ESTRUCTURA_DATOS["delimiter"])
+        self.DATOS_PRUEBA = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=1,delimiter=self.ESTRUCTURA_DATOS["delimiter"])
         
         self.DATOS_ENTRENAR.definirXY()
         self.DATOS_PRUEBA.definirXY()
+
+
+        # Entradas y objetivos de normalización de datos
+        # Inicializar RobustScaler
+        scalerInputs  = RobustScaler()
+        scalerTargets = RobustScaler()
+        # Transformar los datos
+        robust_scaled_Inputs  = scalerInputs.fit_transform(self.DATOS_ENTRENAR.getAllColumnsX())
+        robust_scaled_Targets = scalerTargets.fit_transform(self.DATOS_ENTRENAR.getAllColumnsY())
+
+        # Datos divididos de entrenamiento y prueba
+        inputs_train, inputs_test, targets_train, targets_test = train_test_split(robust_scaled_Inputs, robust_scaled_Targets, random_state = 1, test_size = self.PORCENTAJE)
+
+
+        self.DATOS_ENTRENAR.setX(inputs_train)
+        self.DATOS_ENTRENAR.setY(targets_train)
+
+        self.DATOS_PRUEBA.setX(inputs_test)
+        self.DATOS_PRUEBA.setY(targets_test)
 
         X_ENTRENAR=self.DATOS_ENTRENAR.getX()
         X_PRUEBA=self.DATOS_PRUEBA.getX()
@@ -154,6 +187,25 @@ class proyectoIA(Interface):
         theta=regresion.entrenar()
         print("theta despues de entrenar")
         print(theta)
+
+        # # Transformación inversa en RobustScaler
+        # # Transformación inversa de los datos de entrenamiento para las salidas
+        # yTrain = scalerTargets.inverse_transform(targets_train)
+        # yhTrain = scalerTargets.inverse_transform(Yp)
+
+        # # Transformación inversa de los datos de prueba para las salidas
+        # yTest  = scalerTargets.inverse_transform(targets_test)
+        # yhTest = scalerTargets.inverse_transform(YpT)
+
+        # # R2 for raw train data
+        # R2_train = r2_score(yTrain.reshape(-1, 1),yhTrain.reshape(-1, 1))
+        # print("R2 despues de entrenar")
+        # print(R2_train)
+
+        # # R2 for raw test data
+        # R2_test = r2_score(yTest.reshape(-1, 1),yhTest.reshape(-1, 1))
+        # print("R2 despues de test")
+        # print(R2_test)
 
         R2E,R2T=regresion.calcularMetrica()
         print("R2 despues de entrenar")

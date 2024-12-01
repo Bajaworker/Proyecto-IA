@@ -11,10 +11,24 @@ direccion_carpetas_datos = {
                         "url":url+"src/datasets/regression/Engine Behavior/engine_dataset.mat",
                         "structure":{
                             "type":"TABLE_SPLIT",
+                            "delimiter":None
                         }
                     },
                     "text":"engine_dataset.mat"
                 },
+                {
+                    "id":{
+                        "url":url+"src/datasets/regression/Synthetic Data/challenge01_syntheticdataset22.txt",
+                        "structure":{
+                            "type":"TABLE_DEFAULT",
+                            "columns_x":[0,2],
+                            "columns_y":[2,None],
+                            "delimiter":","
+                        }
+                    },
+                    "text":"Prueba datos normalizacion.txt"
+                    
+                }
             ],
         },
         "CONCRETE_COMPRESSIVE_STRENGTH":{
@@ -27,7 +41,9 @@ direccion_carpetas_datos = {
                         "structure":{
                             "type":"TABLE_DEFAULT",
                             "columns_x":[0,8],
-                            "columns_y":[8,None]
+                            "columns_y":[8,None],
+                            "delimiter":None
+
                         }
                     },
                     "text":"Concrete_Data.xls"
@@ -44,7 +60,8 @@ direccion_carpetas_datos = {
                         "structure":{
                             "type":"TABLE_DEFAULT",
                             "columns_x":[0,9],
-                            "columns_y":[9,None]
+                            "columns_y":[9,None],
+                            "delimiter":None
                         }
                     },
                     "text":"gt_2011.csv",
@@ -55,7 +72,8 @@ direccion_carpetas_datos = {
                         "structure":{
                             "type":"TABLE_DEFAULT",
                             "columns_x":[0,9],
-                            "columns_y":[9,None]
+                            "columns_y":[9,None],
+                            "delimiter":None
                         }
                     },
                     "text":"gt_2012.csv",
@@ -66,7 +84,8 @@ direccion_carpetas_datos = {
                         "structure":{
                             "type":"TABLE_DEFAULT",
                             "columns_x":[0,9],
-                            "columns_y":[9,None]
+                            "columns_y":[9,None],
+                            "delimiter":None
                         }
                     },
                     "text":"gt_2013.csv",
@@ -77,7 +96,9 @@ direccion_carpetas_datos = {
                         "structure":{
                             "type":"TABLE_DEFAULT",
                             "columns_x":[0,9],
-                            "columns_y":[9,None]
+                            "columns_y":[9,None],
+                            "delimiter":None
+
                         }
                     },
                     "text":"gt_2014.csv",
@@ -88,7 +109,8 @@ direccion_carpetas_datos = {
                         "structure":{
                             "type":"TABLE_DEFAULT",
                             "columns_x":[0,9],
-                            "columns_y":[9,None]
+                            "columns_y":[9,None],
+                            "delimiter":None
                         }
                     },
                     "text":"gt_2015.csv",
@@ -107,6 +129,7 @@ direccion_carpetas_datos = {
                         "url":url+"src/datasets/classification/Microchips/microchips_dataset.txt",
                         "structure":{
                             "type":"TABLE_NULL",
+                            "delimiter":None
                         }
                     },
                     "text":"microchips_dataset.txt"
@@ -122,6 +145,7 @@ direccion_carpetas_datos = {
                         "url":url+"src/datasets/classification/Breast cancer/cancer_dataset.dat",
                         "structure":{
                             "type":"TABLE_NULL",
+                            "delimiter":None
                         }
                     },
                     "text":"cancer_dataset.dat"
@@ -137,6 +161,7 @@ direccion_carpetas_datos = {
                         "url":url+"src/datasets/classification/Dermatology/dermatology.dat",
                         "structure":{
                             "type":"TABLE_NULL",
+                            "delimiter":None
                         }
                     },
                     "text":"dermatology.dat"

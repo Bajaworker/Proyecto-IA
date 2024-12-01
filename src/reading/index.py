@@ -13,7 +13,7 @@ class ReadingDataSets:
         return{"data":data}
     
     def readingTxt(self,url):
-        doc = np.loadtxt(url, delimiter=None)
+        doc = np.loadtxt(url, delimiter=self.delimiter)
 
         return self.setFormatDefault(doc)
 

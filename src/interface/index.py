@@ -97,16 +97,16 @@ class Interface:
                 "title":"Selecciona la formas de aprendizaje",
                 "options":[
                     {
-                        "id":"ONLINE",
-                        "text":"online",
-                    },
-                    {
                         "id":"BATCH",
                         "text":"batch",
                     },
                     {
                         "id":"MINI_BATCH",
                         "text":"minibatch",
+                    },
+                    {
+                        "id":"ONLINE",
+                        "text":"online",
                     }
                 ],
                 "get_option":self.getOption,

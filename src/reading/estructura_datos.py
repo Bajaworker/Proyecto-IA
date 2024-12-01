@@ -18,6 +18,9 @@ class EstructuraDatos(ReadingDataSets):
         self.X=None
         self.Y=None
 
+        self.Columns_X=None
+        self.Columns_Y=None
+
     def definirXY(self):
         try:
             dato = self.reading(self.ruta)
@@ -46,6 +49,9 @@ class EstructuraDatos(ReadingDataSets):
             # Datos de prueba
             self.X = dato[datosTomado:, columns_x[0]:columns_x[1]]
             self.Y = dato[datosTomado:, columns_y[0]:columns_y[1]]
+        
+        self.Columns_X=dato[:, columns_x[0]:columns_x[1]]
+        self.Columns_Y=dato[:, columns_y[0]:columns_y[1]]
 
     def getDataTableSplit(self,data_x,data_y):
         datosTomado = int(data_x.shape[0] * self.porcentaje)
@@ -59,11 +65,26 @@ class EstructuraDatos(ReadingDataSets):
             self.X = data_x[datosTomado:]
             self.Y = data_y[datosTomado:]
 
+        self.Columns_X=data_x
+        self.Columns_Y=data_y
+
     def getX(self):
         return self.X
 
     def getY(self):
         return self.Y
+
+    def setX(self,X):
+        self.X=X
+
+    def setY(self,Y):
+        self.Y=Y
+    
+    def getAllColumnsX(self):
+        return self.Columns_X
+
+    def getAllColumnsY(self):
+        return self.Columns_Y
 
     def normalizarDatosX(self,ymin,ymax):
         if self.X is None:
