@@ -5,22 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbbceecc-69cc-4389-9e7e-05c965155e8e" name="Changes" comment="Modificacion4">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dato/Datos.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dato/Datos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Funcion/FuncionRidge.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Funcion/FuncionRidge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Funcion/FuncionRosenbrock.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Funcion/Base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Funcion/Base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Funcion/PruebaDeFuncion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Funcion/PruebaDeFuncion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Funcion/R2.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Funcion/R2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modelo/Base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/Base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Modelo/ProbarModeloRegresion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/ProbarModeloRegresion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Modelo/Regresion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo/Regresion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/Adagrad.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/Adagrad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/Base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/Base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/PruebaAdagrad.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/PruebaAdagrad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/PruebaAdagradConRosenbrock.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/SMORMS3.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/SMORMS3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reading/estructura_datos.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/reading/estructura_datos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,29 +58,36 @@
   &quot;keyToString&quot;: {
     &quot;Python.Adagrad.executor&quot;: &quot;Coverage&quot;,
     &quot;Python.AlgoritmoAdagradIA1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Clasificacion.executor&quot;: &quot;Run&quot;,
     &quot;Python.FuncionRidge.executor&quot;: &quot;Run&quot;,
     &quot;Python.ProbarModeloRegresion.executor&quot;: &quot;Run&quot;,
     &quot;Python.ProbarRegresionLineal2.executor&quot;: &quot;Run&quot;,
     &quot;Python.Prueba de regresion.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Prueba3.executor&quot;: &quot;Run&quot;,
     &quot;Python.PruebaAdagrad.executor&quot;: &quot;Run&quot;,
     &quot;Python.PruebaAdagrad2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PruebaAdagradConClasificacion.executor&quot;: &quot;Run&quot;,
     &quot;Python.PruebaAdagradConRosenbrock.executor&quot;: &quot;Run&quot;,
     &quot;Python.PruebaDeAdagradConRosenbrock.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PruebaDeClasificacion.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PruebaDeClasificacion2.executor&quot;: &quot;Run&quot;,
     &quot;Python.PruebaDeDatos.executor&quot;: &quot;Run&quot;,
     &quot;Python.PruebaDeFuncion.executor&quot;: &quot;Run&quot;,
     &quot;Python.PruebaDeSMORMS3ConRosenbrock.executor&quot;: &quot;Run&quot;,
     &quot;Python.PruebaDeSMORMSEConRosenbrock.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PruebaFuncionClasificacion.executor&quot;: &quot;Run&quot;,
     &quot;Python.SMORMS3.executor&quot;: &quot;Debug&quot;,
     &quot;Python.SMORMS3sinObjeto.executor&quot;: &quot;Run&quot;,
     &quot;Python.VLRGradienteDescentendeConRosenbrock.executor&quot;: &quot;Run&quot;,
     &quot;Python.VLRGradienteDescentendeSinobjeto.executor&quot;: &quot;Run&quot;,
     &quot;Python.index (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.index.executor&quot;: &quot;Run&quot;,
+    &quot;Python.prueba4.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/benit/PycharmProjects/Proyecto-IA2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/benit/PycharmProjects/FundamentoMatematica&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -97,8 +96,8 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.index">
-    <configuration name="PruebaAdagrad" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.PruebaDeClasificacion">
+    <configuration name="Clasificacion" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Proyecto-IA2" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -107,12 +106,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/algorithms" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/Modelo" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/algorithms/PruebaAdagrad.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Modelo/Clasificacion.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -121,7 +120,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="PruebaDeAdagradConRosenbrock" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="PruebaDeClasificacion" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Proyecto-IA2" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -130,12 +129,35 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/algorithms" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/Modelo" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/algorithms/PruebaDeAdagradConRosenbrock.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Modelo/PruebaDeClasificacion.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PruebaDeClasificacion2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Proyecto-IA2" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/Funcion" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Funcion/PruebaDeClasificacion2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -167,7 +189,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="PruebaDeSMORMS3ConRosenbrock" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="PruebaFuncionClasificacion" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Proyecto-IA2" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -176,35 +198,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/algorithms" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/Funcion" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/algorithms/PruebaDeSMORMS3ConRosenbrock.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="index" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Proyecto-IA2" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/index.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Funcion/PruebaFuncionClasificacion.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -215,11 +214,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.index" />
-        <item itemvalue="Python.PruebaAdagrad" />
+        <item itemvalue="Python.PruebaDeClasificacion" />
         <item itemvalue="Python.PruebaDeFuncion" />
-        <item itemvalue="Python.PruebaDeAdagradConRosenbrock" />
-        <item itemvalue="Python.PruebaDeSMORMS3ConRosenbrock" />
+        <item itemvalue="Python.PruebaDeClasificacion2" />
+        <item itemvalue="Python.PruebaFuncionClasificacion" />
+        <item itemvalue="Python.Clasificacion" />
       </list>
     </recent_temporary>
   </component>
@@ -281,7 +280,12 @@
       <workItem from="1733010368152" duration="16000" />
       <workItem from="1733015868796" duration="1709000" />
       <workItem from="1733019425633" duration="4451000" />
-      <workItem from="1733025114935" duration="929000" />
+      <workItem from="1733025114935" duration="1636000" />
+      <workItem from="1733107544773" duration="198000" />
+      <workItem from="1733108086138" duration="2480000" />
+      <workItem from="1733119688010" duration="7381000" />
+      <workItem from="1733144754904" duration="10478000" />
+      <workItem from="1733155636318" duration="2610000" />
     </task>
     <task id="LOCAL-00001" summary="adagrad">
       <option name="closed" value="true" />
@@ -374,28 +378,50 @@
           <url>file://$PROJECT_DIR$/src/algorithms/Adagrad.py</url>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/Funcion/PruebaDeFuncion.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/Funcion/PruebaDeFuncion.py</url>
+          <line>86</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/Modelo/PruebaDeClasificacion.py</url>
+          <line>78</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Proyecto_IA2$Prueba_de_regresion.coverage" NAME="Prueba de regresion Coverage Results" MODIFIED="1732753988328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Proyecto_IA2$ProbarRegresionLineal2.coverage" NAME="ProbarRegresionLineal2 Coverage Results" MODIFIED="1732752557784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/Proyecto_IA2$index.coverage" NAME="index Coverage Results" MODIFIED="1733025755985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Proyecto_IA2$SMORMS3.coverage" NAME="SMORMS3 Coverage Results" MODIFIED="1732835878230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaAdagradConClasificacion.coverage" NAME="PruebaAdagradConClasificacion Coverage Results" MODIFIED="1733148445918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaDeClasificacion2.coverage" NAME="PruebaDeClasificacion2 Coverage Results" MODIFIED="1733155639337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Funcion" />
     <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaDeSMORMSEConRosenbrock.coverage" NAME="PruebaDeSMORMSEConRosenbrock Coverage Results" MODIFIED="1732835651957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
     <SUITE FILE_PATH="coverage/Proyecto_IA2$SMORMS3sinObjeto.coverage" NAME="SMORMS3sinObjeto Coverage Results" MODIFIED="1732840793204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
-    <SUITE FILE_PATH="coverage/Proyecto_IA2$VLRGradienteDescentendeSinobjeto.coverage" NAME="VLRGradienteDescentendeSinobjeto Coverage Results" MODIFIED="1732840653345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
-    <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaDeFuncion.coverage" NAME="PruebaDeFuncion Coverage Results" MODIFIED="1733021333502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Funcion" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaDeClasificacion.coverage" NAME="PruebaDeClasificacion Coverage Results" MODIFIED="1733158244060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Modelo" />
     <SUITE FILE_PATH="coverage/Proyecto_IA2$ProbarModeloRegresion.coverage" NAME="ProbarModeloRegresion Coverage Results" MODIFIED="1732754628601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Modelo" />
-    <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaDeAdagradConRosenbrock.coverage" NAME="PruebaDeAdagradConRosenbrock Coverage Results" MODIFIED="1733021061724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
-    <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaAdagrad2.coverage" NAME="PruebaAdagrad2 Coverage Results" MODIFIED="1732661019780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
-    <SUITE FILE_PATH="coverage/Proyecto_IA2$index__1_.coverage" NAME="index (1) Coverage Results" MODIFIED="1732752586393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Proyecto_IA2$AlgoritmoAdagradIA1.coverage" NAME="AlgoritmoAdagradIA1 Coverage Results" MODIFIED="1732837286475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$Prueba3.coverage" NAME="Prueba3 Coverage Results" MODIFIED="1733146829239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Funcion" />
     <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaAdagradConRosenbrock.coverage" NAME="PruebaAdagradConRosenbrock Coverage Results" MODIFIED="1732837792573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
     <SUITE FILE_PATH="coverage/Proyecto_IA2$VLRGradienteDescentendeConRosenbrock.coverage" NAME="VLRGradienteDescentendeConRosenbrock Coverage Results" MODIFIED="1732833543007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
     <SUITE FILE_PATH="coverage/Proyecto_IA2$FuncionRidge.coverage" NAME="FuncionRidge Coverage Results" MODIFIED="1732576783321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Funcion" />
     <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaAdagrad.coverage" NAME="PruebaAdagrad Coverage Results" MODIFIED="1733021648293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
     <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaDeSMORMS3ConRosenbrock.coverage" NAME="PruebaDeSMORMS3ConRosenbrock Coverage Results" MODIFIED="1733019134226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
     <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaDeDatos.coverage" NAME="PruebaDeDatos Coverage Results" MODIFIED="1732750208072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Dato" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$Clasificacion.coverage" NAME="Clasificacion Coverage Results" MODIFIED="1733153517021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Modelo" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$Prueba_de_regresion.coverage" NAME="Prueba de regresion Coverage Results" MODIFIED="1732753988328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$index.coverage" NAME="index Coverage Results" MODIFIED="1733107642041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaFuncionClasificacion.coverage" NAME="PruebaFuncionClasificacion Coverage Results" MODIFIED="1733155507619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Funcion" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$SMORMS3.coverage" NAME="SMORMS3 Coverage Results" MODIFIED="1732835878230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$VLRGradienteDescentendeSinobjeto.coverage" NAME="VLRGradienteDescentendeSinobjeto Coverage Results" MODIFIED="1732840653345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaDeFuncion.coverage" NAME="PruebaDeFuncion Coverage Results" MODIFIED="1733155649719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Funcion" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaDeAdagradConRosenbrock.coverage" NAME="PruebaDeAdagradConRosenbrock Coverage Results" MODIFIED="1733021061724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$PruebaAdagrad2.coverage" NAME="PruebaAdagrad2 Coverage Results" MODIFIED="1732661019780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/algorithms" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$index__1_.coverage" NAME="index (1) Coverage Results" MODIFIED="1732752586393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$AlgoritmoAdagradIA1.coverage" NAME="AlgoritmoAdagradIA1 Coverage Results" MODIFIED="1732837286475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads" />
+    <SUITE FILE_PATH="coverage/Proyecto_IA2$prueba4.coverage" NAME="prueba4 Coverage Results" MODIFIED="1733147897254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Funcion" />
   </component>
 </project>

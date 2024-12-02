@@ -24,7 +24,7 @@ class Datos:
             elif self.inversar == 1:
                 # Datos de prueba
                 self.X = inputs_test
-                self.Y = inputs_train
+                self.Y = targets_test
             else:
                 raise ValueError("El parámetro 'inversar' debe ser 0 (entrenamiento) o 1 (prueba).")
         except Exception as e:
@@ -53,6 +53,21 @@ class Datos:
             raise ValueError("Los datos no están normalizados. Usa normalizarDatos() primero.")
         self.X = self.scalerInputs.inverse_transform(self.X)
         self.Y = self.scalerTargets.inverse_transform(self.Y)
+
+
+    def normalizarDatosX(self):
+        if self.X is None:
+            raise ValueError("Los datos de X no están definidos. Usa definirXY() primero.")
+        self.scalerInputs = RobustScaler()
+        self.X= self.scalerInputs.fit_transform(self.X)
+
+
+    def desNormalizarDatos(self):
+        if self.X is None or self.Y is None:
+            raise ValueError("Los datos no están definidos. Usa definirXY() primero.")
+        if self.scalerInputs is None:
+            raise ValueError("Los datos no están normalizados. Usa normalizarDatos() primero.")
+        self.X = self.scalerInputs.inverse_transform(self.X)
 
 
     def tamañoDeDatos(self,tipoSeparacion):

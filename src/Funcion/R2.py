@@ -15,3 +15,13 @@ class R2(Funcion):
 
     def gradiente(self,theta,X_Batch=None,Y_Batch=None):
         return "Todavia no esta definido"
+
+
+
+#def __init__(self,MatrizDiseño,Datos,yp):
+
+#    def ejecutarFuncion(self,theta,X_Batch=None,Y_Batch=None):
+        #Y = self.Datos.getY()
+        #Yp=self.yp
+        #R2=r2_score(Y.reshape(-1,1),Yp.reshape(-1,1))
+        #return R2

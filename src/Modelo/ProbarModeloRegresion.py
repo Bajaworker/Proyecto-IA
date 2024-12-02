@@ -10,6 +10,7 @@ from src.MatrizDiseño.MatrizDiseño import MatrizDiseño
 from src.algorithms.Adagrad import AlgorithmAdagrad
 from src.Modelo.Regresion import ModeloRegresion
 
+
 ruta2="C:/Users/benit/Downloads/energyefficiency_dataset.txt"
 
 datosE = Datos(ruta2, 0.8,0)

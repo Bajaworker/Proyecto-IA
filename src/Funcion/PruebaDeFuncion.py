@@ -1,18 +1,22 @@
 import numpy as np
 
 from src.Dato.Datos import Datos
+from src.Funcion.FuncionEntropiaCruzadaBinaria import EntropiaCruzadaBinaria
 from src.Funcion.FuncionError import FuncionError
 from src.Funcion.FuncionMSE import FuncionMSE
 from src.Funcion.FuncionRidge import FuncionRidge
 from src.Funcion.FuncionRosenbrock import FuncionRosenbrock
 from src.Funcion.FuncionSSM import FuncionSSM
+from src.Funcion.RMSE import FuncionRMSE
 from src.MatrizDiseño.MatrizDiseño import MatrizDiseño
 
 # Ruta del archivo
 ruta = "C:/Users/benit/Downloads/challenge1_dataset22 (1).txt"
+ruta2="C:/Users/benit/Downloads/iris_dataset.mat"
 
 # Crear instancia de la clase Datos
 datos = Datos(ruta,0.5,0)
+
 
 # Configurar columnas de X e Y (adaptar si cambia el formato del archivo)
 col_inicio_X = 0
@@ -21,16 +25,20 @@ col_inicio_Y = 2
 col_final_Y = None  # Esto toma todas las columnas restantes para Y
 tipo_separacion = None  # Cambiar según el separador real del archivo
 
+
 # Definir los datos de X e Y
 datos.definirXY(col_inicio_X, col_final_X, col_inicio_Y, col_final_Y, tipo_separacion)
 
 r,c=datos.renglonColumnaDeY()
+
 X=datos.getX()
+
 #Matriz
 matriz_diseño = (MatrizDiseño(X, grados=1))
 
 #theta y landa
 theta=np.random.randint(0,1,size=(matriz_diseño.getTamañoParametro(),c))
+
 landa=0.5
 theta2=[2,3,45,5,6]
 
@@ -71,3 +79,19 @@ print(f"Error para mini-lote (primeras 5 filas): \n{error_minilote[:5]}")
 
 ridge_minilote = funcion_ridge.ejecutarFuncion(theta, X_Batch=X_batch, Y_Batch=Y_batch)
 print(f"Función Ridge para mini-lote: {ridge_minilote}")
+
+# Crear instancia de la clase FuncionRMSE
+rmse = FuncionRMSE(matriz_diseño, datos, funcion_mse)
+
+# Probar la función ejecutarFuncion de FuncionRMSE
+print("\nRMSE:")
+rmse_total = rmse.ejecutarFuncion(theta)
+print(f"RMSE Total: {rmse_total}")
+
+# Probar con mini-lote
+rmse_minilote = rmse.ejecutarFuncion(theta, X_batch, Y_batch)
+print(f"RMSE para mini-lote: {rmse_minilote}")
+
+# Probar gradiente de RMSE
+gradiente_rmse = rmse.gradiente(theta, X_batch, Y_batch)
+print(f"Gradiente de RMSE para mini-lote:\n{gradiente_rmse}")

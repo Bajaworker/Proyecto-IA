@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-import numpy as np
+
+
 
 class Modelo(ABC):
     def __init__(self, DatosE,DatosT, Metrica, Optimizador,MatrizDiseñoE,MatrizDiseñoT,theta):
