@@ -128,8 +128,10 @@ direccion_carpetas_datos = {
                     "id":{
                         "url":url+"src/datasets/classification/Microchips/microchips_dataset.txt",
                         "structure":{
-                            "type":"TABLE_NULL",
-                            "delimiter":None
+                            "type":"TABLE_DEFAULT",
+                            "columns_x":[0,2],
+                            "columns_y":[2,None],
+                            "delimiter":","
                         }
                     },
                     "text":"microchips_dataset.txt"
@@ -142,13 +144,15 @@ direccion_carpetas_datos = {
             "options":[
                 {
                     "id":{
-                        "url":url+"src/datasets/classification/Breast cancer/cancer_dataset.dat",
+                        "url":url+"src/datasets/classification/Breast cancer/cancer_dataset.txt",
                         "structure":{
-                            "type":"TABLE_NULL",
-                            "delimiter":None
+                            "type":"TABLE_DEFAULT",
+                            "columns_x":[0,9],
+                            "columns_y":[9,None],
+                            "delimiter":","
                         }
                     },
-                    "text":"cancer_dataset.dat"
+                    "text":"cancer_dataset.txt"
                 }
             ],
         },
@@ -160,8 +164,10 @@ direccion_carpetas_datos = {
                     "id":{
                         "url":url+"src/datasets/classification/Dermatology/dermatology.dat",
                         "structure":{
-                            "type":"TABLE_NULL",
-                            "delimiter":None
+                            "type":"TABLE_DEFAULT",
+                            "columns_x":[0,34],
+                            "columns_y":[34,None],
+                            "delimiter":" "
                         }
                     },
                     "text":"dermatology.dat"
@@ -191,21 +197,21 @@ options_metricas_desempenio = {
             # }
     ],
     "CLASIFICACION":[
-            {
-                "id":"MATRIZ_DE_CONFUSION",
-                "text":"matriz de confusion",
-            },
-            {
-                "id":"ROC",
-                "text":"ROC",
-            },
+            # {
+            #     "id":"MATRIZ_DE_CONFUSION",
+            #     "text":"matriz de confusion",
+            # },
+            # {
+            #     "id":"ROC",
+            #     "text":"ROC",
+            # },
             {
                 "id":"ENTROPIA_CRUZADA_BINARIA",
                 "text":"Entropia cruzada binaria",
             },
-            {
-                "id":"ENTROPIA_CRUZADA_CATEGORICA",
-                "text":"Entropia cruzada categorica",
-            }
+            # {
+            #     "id":"ENTROPIA_CRUZADA_CATEGORICA",
+            #     "text":"Entropia cruzada categorica",
+            # }
     ]
 }

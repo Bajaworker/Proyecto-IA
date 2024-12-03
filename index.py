@@ -16,6 +16,10 @@ from sklearn.preprocessing import RobustScaler
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 
+from src.Funcion.FuncionEntropiaCruzadaBinaria import EntropiaCruzadaBinaria
+from src.Funcion.Precicion import Precicion
+from src.Modelo.Clasificacion import Clasificacion
+
 class proyectoIA(Interface):
     def __init__(self):
         super().__init__()
@@ -47,9 +51,7 @@ class proyectoIA(Interface):
             case "REGRESION":
                 self.model_regresion()
             case "CLASIFICACION":
-                print("MODELO SELECCIONADO NO DISPONIBLE")
-                sys.error()
-
+                self.model_clasificacion()
         return
 
     def getAlgoritmo(self,theta,funtion):
@@ -95,7 +97,6 @@ class proyectoIA(Interface):
                 sys.error()
 
 
-#Hay la nombre y la orden de la funcion esta algo mal
     def getMetricasDesempenioRegresion(self,matrix_disenio_entrenar):
         landa = 0.5
         # Crear funciones de evaluación
@@ -116,7 +117,60 @@ class proyectoIA(Interface):
         
         return funcionObjetivo
 
-#Ejecutar Correcto
+    def model_clasificacion(self):
+        self.DATOS_ENTRENAR = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=0,delimiter=self.ESTRUCTURA_DATOS["delimiter"])
+        self.DATOS_PRUEBA = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=1,delimiter=self.ESTRUCTURA_DATOS["delimiter"])
+        
+        self.DATOS_ENTRENAR.definirXY()
+        self.DATOS_PRUEBA.definirXY()
+
+        X_ENTRENAR=self.DATOS_ENTRENAR.getX()
+        X_PRUEBA=self.DATOS_PRUEBA.getX()
+        print(X_ENTRENAR.shape)
+        print(X_PRUEBA.shape)
+
+        YE=self.DATOS_ENTRENAR.getY()
+        YT=self.DATOS_PRUEBA.getY()
+        print(YE.shape)
+        print(YT.shape)
+
+        matrix_disenio_entrenar=MatrizDiseño(X_ENTRENAR,1)
+        matrix_disenio_prueba=MatrizDiseño(X_PRUEBA,1)
+
+        # Inicialización de theta y parámetros
+        r, c = self.DATOS_ENTRENAR.renglonColumnaDeY()
+        theta = np.random.rand(matrix_disenio_entrenar.getTamañoParametro(), c)
+        print(theta.shape)
+        mu = 0.1
+
+        # Crear funciones de evaluación
+        funcionObjectivo=EntropiaCruzadaBinaria(matrix_disenio_entrenar,self.DATOS_ENTRENAR,mu)
+        precicion=Precicion(matrix_disenio_entrenar,self.DATOS_ENTRENAR)
+
+        algoritmo = self.getAlgoritmo(theta=theta,funtion=funcionObjectivo)
+
+        self.getFormaDeAprendizajeRegresion(algoritmo=algoritmo)
+
+        clasificacion=Clasificacion(self.DATOS_ENTRENAR,self.DATOS_PRUEBA,precicion,algoritmo,matrix_disenio_entrenar,matrix_disenio_prueba,theta)
+
+        clasificacion.entrenar()
+
+        # Predicción y evaluación
+        y_pred_train, y_pred_test = clasificacion.predecir()
+
+        acc_train,acc_test  =clasificacion.calcularPrecicion()
+
+
+        print("Accuracy en entrenamiento:", acc_train)
+        print("Accuracy en prueba:", acc_test)
+
+        # Mostrar matriz de confusión y reporte
+        print("Matriz de confusión (entrenamiento):\n", clasificacion.getMatrizConfunsionE())
+        print("Matriz de confusión (prueba):\n", clasificacion.getMatrizConfunsionT())
+        print("Reporte de clasificación (entrenamiento):\n", clasificacion.getReporteE())
+        print("Reporte de clasificación (prueba):\n", clasificacion.getReporteT())
+
+
     def model_regresion(self):
 
         self.DATOS_ENTRENAR = EstructuraDatos(ruta=self.URL_DE_DATOS,estructura_datos=self.ESTRUCTURA_DATOS,porcentaje=self.PORCENTAJE,inversar=0,delimiter=self.ESTRUCTURA_DATOS["delimiter"])
@@ -124,11 +178,6 @@ class proyectoIA(Interface):
         
         self.DATOS_ENTRENAR.definirXY()
         self.DATOS_PRUEBA.definirXY()
-
-        #Nomalizar
-        #self.DATOS_PRUEBA.normalizarDatosX(), ha cambiado la funcion de normalizar, ante tomar parametro pero ahora no
-        # self.DATOS_ENTRENAR.normalizarDatosX()
-
 
         # Entradas y objetivos de normalización de datos
         # Inicializar RobustScaler
@@ -212,9 +261,6 @@ class proyectoIA(Interface):
         theta=regresion.entrenar()
         print("theta despues de entrenar")
         print(theta)
-        #vuelve a predecir
-        #convieterlanormalizarendesnomalizar (Falta modificar este parte)
-        #ejecuatarR2
 
         Yp,YpT=regresion.predecir()
 
