@@ -10,6 +10,46 @@ class Datos:
         self.inversar = inversar
         self.scalerInputs = None
         self.scalerTargets = None
+
+    def to_binary_matrix(self,z):
+        # Aseguramos que los elementos de z sean de tipo float
+        z = z.astype(float)
+        
+        # Convertimos los elementos de z a enteros para usar como índices
+        z = z.astype(int)
+        
+        # Encuentra el valor máximo en z para determinar el número de columnas
+        max_value = np.max(z)
+        
+        # Crea la matriz binaria con el tamaño adecuado
+        binary_matrix = np.zeros((z.shape[0], max_value), dtype=int)
+        
+        # Llena la matriz binaria
+        for i, value in enumerate(z):
+            binary_matrix[i, value - 1] = 1  # Ajusta el índice para usar en el array
+        
+        return binary_matrix
+    
+    def to_binary_matrix_binario(self,z):
+        # Aseguramos que los elementos de z sean de tipo float
+        z = z.astype(float)
+        
+        # Convertimos los elementos de z a enteros para usar como índices
+        z = z.astype(int)
+        
+        # Encuentra el valor máximo en z para determinar el número de columnas
+        max_value = np.max(z)
+        
+        # Crea la matriz binaria con el tamaño adecuado
+        binary_matrix = np.zeros((z.shape[0], max_value + 1), dtype=int)
+        
+        # Llena la matriz binaria
+        for i, value in enumerate(z):
+            if value >= 0:  # Asegura que solo los valores positivos y cero se consideren
+                binary_matrix[i, value] = 1  # Ajusta el índice para usar en el array
+        
+        return binary_matrix
+
     def definirXY(self,colIniciaX,colFinalX,colIniciaY,colFinalY,tipoSeparacion):
         try:
             dato = np.loadtxt(self.ruta, delimiter=tipoSeparacion)
@@ -20,11 +60,11 @@ class Datos:
             if self.inversar == 0:
                 # Datos de entrenamiento
                 self.X = inputs_train
-                self.Y = targets_train
+                self.Y = self.to_binary_matrix_binario(targets_train)
             elif self.inversar == 1:
                 # Datos de prueba
                 self.X = inputs_test
-                self.Y = targets_test
+                self.Y = self.to_binary_matrix_binario(targets_test)
             else:
                 raise ValueError("El parámetro 'inversar' debe ser 0 (entrenamiento) o 1 (prueba).")
         except Exception as e:

@@ -120,24 +120,6 @@ direccion_carpetas_datos = {
         },
     },
     "CLASIFICACION":{
-        "MICROCHIPS":{
-            "id":"MICROCHIPS",
-            "text":"Microchips",
-            "options":[
-                {
-                    "id":{
-                        "url":url+"src/datasets/classification/Microchips/microchips_dataset.txt",
-                        "structure":{
-                            "type":"TABLE_DEFAULT",
-                            "columns_x":[0,2],
-                            "columns_y":[2,None],
-                            "delimiter":","
-                        }
-                    },
-                    "text":"microchips_dataset.txt"
-                }
-            ],
-        },
         "BREAST_CANCER":{
             "id":"BREAST_CANCER",
             "text":"Breast cancer",
@@ -156,6 +138,26 @@ direccion_carpetas_datos = {
                 }
             ],
         },
+        "MICROCHIPS":{
+            "id":"MICROCHIPS",
+            "text":"Microchips",
+            "options":[
+                {
+                    "id":{
+                        "url":url+"src/datasets/classification/Microchips/microchips_dataset.txt",
+                        "structure":{
+                            "type":"TABLE_DEFAULT_BINARIO",
+                            "columns_x":[0,2],
+                            "columns_y":[2,None],
+                            "delimiter":",",
+
+                        }
+                    },
+                    "text":"microchips_dataset.txt"
+                }
+            ],
+        },
+
         "DERMATOLOGY":{
             "id":"DERMATOLOGY",
             "text":"Dermatology",
@@ -164,7 +166,7 @@ direccion_carpetas_datos = {
                     "id":{
                         "url":url+"src/datasets/classification/Dermatology/dermatology.dat",
                         "structure":{
-                            "type":"TABLE_DEFAULT",
+                            "type":"TABLE_DEFAULT_NUMERACION",
                             "columns_x":[0,34],
                             "columns_y":[34,None],
                             "delimiter":" "

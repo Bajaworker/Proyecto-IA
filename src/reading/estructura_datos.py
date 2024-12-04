@@ -5,6 +5,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'
 
 import numpy as np
 from src.reading.index import ReadingDataSets
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import RobustScaler
 
 #falta agragar
 class EstructuraDatos(ReadingDataSets):
@@ -38,11 +40,65 @@ class EstructuraDatos(ReadingDataSets):
                                              columns_y=self.estructura_datos["columns_y"])
                 case "TABLE_SPLIT":
                     self.getDataTableSplit(data_x=dato["x"], data_y=dato["y"])
+
+                case "TABLE_DEFAULT_BINARIO":
+                    self.definirXYBinario(
+                        colIniciaX=self.estructura_datos["columns_x"][0],
+                        colFinalX=self.estructura_datos["columns_x"][1],
+                        colIniciaY=self.estructura_datos["columns_y"][0],
+                        colFinalY=self.estructura_datos["columns_y"][1],
+                        tipoSeparacion=",",
+                        funcion_matrix=self.to_binary_matrix_binario
+                    )
+                case "TABLE_DEFAULT_NUMERACION":
+                    self.definirXYBinario(
+                        colIniciaX=self.estructura_datos["columns_x"][0],
+                        colFinalX=self.estructura_datos["columns_x"][1],
+                        colIniciaY=self.estructura_datos["columns_y"][0],
+                        colFinalY=self.estructura_datos["columns_y"][1],
+                        tipoSeparacion=" ",
+                        funcion_matrix=self.to_binary_matrix
+                    )
                 case _:
                     print("LA ESTRUCTURA NO ESTA DEFINIDA EN EL CASE")
                     sys.error()
         except Exception as e:
             print(f"Error al cargar el archivo: {e}")
+
+    def definirXYBinario(self,colIniciaX,colFinalX,colIniciaY,colFinalY,tipoSeparacion,funcion_matrix):
+        try:
+            dato = np.loadtxt(self.ruta, delimiter=tipoSeparacion)
+            X=dato[:,colIniciaX:colFinalX]
+            Y=dato[:,colIniciaY:colFinalY]
+            inputs_train, inputs_test, targets_train, targets_test = train_test_split(X,Y,random_state=1, test_size=1-self.porcentaje)
+
+            if self.inversar == 0:
+                # Datos de entrenamiento
+                self.X = inputs_train
+                self.Y = funcion_matrix(targets_train)
+            elif self.inversar == 1:
+                # Datos de prueba
+                self.X = inputs_test
+                self.Y = funcion_matrix(targets_test)
+            else:
+                raise ValueError("El parámetro 'inversar' debe ser 0 (entrenamiento) o 1 (prueba).")
+        except Exception as e:
+            print(f"Error al cargar el archivo: {e}")
+
+    def getDataTableDefaultBinario(self, dato, columns_x, columns_y):
+        datosTomado = int(dato.shape[0] * self.porcentaje)
+
+        if self.inversar == 0:
+            # Datos de entrenamiento
+            self.X = dato[:datosTomado, columns_x[0]:columns_x[1]]
+            self.Y = self.to_binary_matrix_binario(dato[:datosTomado, columns_y[0]:columns_y[1]])
+        else:
+            # Datos de prueba
+            self.X = dato[datosTomado:, columns_x[0]:columns_x[1]]
+            self.Y = self.to_binary_matrix_binario(dato[datosTomado:, columns_y[0]:columns_y[1]])
+        
+        self.Columns_X=dato[:, columns_x[0]:columns_x[1]]
+        self.Columns_Y=dato[:, columns_y[0]:columns_y[1]]
 
     def getDataTableDefault(self, dato, columns_x, columns_y):
         datosTomado = int(dato.shape[0] * self.porcentaje)
@@ -73,6 +129,46 @@ class EstructuraDatos(ReadingDataSets):
 
         self.Columns_X=data_x
         self.Columns_Y=data_y
+
+
+    def to_binary_matrix(self,z):
+        # Aseguramos que los elementos de z sean de tipo float
+        z = z.astype(float)
+        
+        # Convertimos los elementos de z a enteros para usar como índices
+        z = z.astype(int)
+        
+        # Encuentra el valor máximo en z para determinar el número de columnas
+        max_value = np.max(z)
+        
+        # Crea la matriz binaria con el tamaño adecuado
+        binary_matrix = np.zeros((z.shape[0], max_value), dtype=int)
+        
+        # Llena la matriz binaria
+        for i, value in enumerate(z):
+            binary_matrix[i, value - 1] = 1  # Ajusta el índice para usar en el array
+        
+        return binary_matrix
+    
+    def to_binary_matrix_binario(self,z):
+        # Aseguramos que los elementos de z sean de tipo float
+        z = z.astype(float)
+        
+        # Convertimos los elementos de z a enteros para usar como índices
+        z = z.astype(int)
+        
+        # Encuentra el valor máximo en z para determinar el número de columnas
+        max_value = np.max(z)
+        
+        # Crea la matriz binaria con el tamaño adecuado
+        binary_matrix = np.zeros((z.shape[0], max_value + 1), dtype=int)
+        
+        # Llena la matriz binaria
+        for i, value in enumerate(z):
+            if value >= 0:  # Asegura que solo los valores positivos y cero se consideren
+                binary_matrix[i, value] = 1  # Ajusta el índice para usar en el array
+        
+        return binary_matrix
 
     def getX(self):
         return self.X
