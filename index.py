@@ -77,9 +77,9 @@ class proyectoIA(Interface):
                     theta=theta,
                     funcion=funtion,
                     tasaDeAprendizaje=0.01,
-                    epoca=100000,
+                    epoca=300000,
                     steps=10000,
-                    gamma=2
+                    gamma=0.1
                 )
                 return SDGWithClic
         return
